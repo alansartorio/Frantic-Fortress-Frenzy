@@ -26,10 +26,10 @@ public class Health : MonoBehaviour
     public void ApplyDamage(float damage)
     {
         health -= damage;
+        audioSource.PlayOneShot(damageAudioClip, 0.7f);
         if (health <= 0)
         {
             health = 0;
-            audioSource.PlayOneShot(damageAudioClip, 0.7f);
         }
     }
 }
