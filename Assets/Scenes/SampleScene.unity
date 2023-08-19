@@ -793,6 +793,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 522331008933142561, guid: 605d7ca32690a34859566d1715a10afa,
         type: 3}
+      propertyPath: deathAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a3e52193f4441d7b8a738c744523861, type: 3}
+    - target: {fileID: 522331008933142561, guid: 605d7ca32690a34859566d1715a10afa,
+        type: 3}
       propertyPath: damageAudioClip
       value: 
       objectReference: {fileID: 8300000, guid: 046e2d2164dd37722b37a3f945a143e2, type: 3}
