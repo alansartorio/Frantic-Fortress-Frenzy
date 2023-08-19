@@ -5,6 +5,8 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float health;
+    public AudioClip damageAudioClip;
+    private AudioSource audioSource;
 
     public bool Dead
     {
@@ -14,6 +16,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -26,7 +29,7 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
-            Destroy(gameObject);
+            audioSource.PlayOneShot(damageAudioClip, 0.7f);
         }
     }
 }
