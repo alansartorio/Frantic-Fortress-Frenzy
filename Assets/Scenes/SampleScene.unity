@@ -642,8 +642,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetHealth: {fileID: 0}
-  attackCooldown: 0.1
+  attackOnStart: 1
+  attackCooldown: 0.5
   damage: 5
+  resetOnTargetLost: 0
 --- !u!4 &1464676746 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3427488365040862115, guid: 93206730b0f0cdd14bc4ac410e1b82ff,
@@ -685,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4089da4ba035ec37ca7c6de080f63bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 2
+  spawnInterval: 0.5
   enemy: {fileID: 3509487019743703083, guid: 08fe77601e3bd409bab6f24aab7cf33b, type: 3}
   target: {fileID: 882992923}
 --- !u!4 &1893573203
@@ -887,6 +889,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 638270992620573942, guid: 605d7ca32690a34859566d1715a10afa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045571129072593497, guid: 605d7ca32690a34859566d1715a10afa,
         type: 3}
       propertyPath: m_Enabled
       value: 0

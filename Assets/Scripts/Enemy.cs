@@ -18,28 +18,28 @@ public class Enemy : MonoBehaviour
         idleScript = GetComponent<EnemyIdle>();
         var targetHealth = target.GetComponent<HealthManager>();
         targetHealth.onDeath.AddListener((_) => {
-            GetComponent<Collider>().enabled = false;
             SetState(EnemyState.Idle);
         });
 
+        GetComponent<Attack>().SetTarget(null);
         GetComponent<HealthManager>().onDeath.AddListener((_) => {
             Destroy(gameObject);
         });
-        GetComponent<Attack>().targetHealth = targetHealth;
         SetState(EnemyState.Walking);
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject == target)
+        if (collider.gameObject == target && state != EnemyState.Idle)
         {
             SetState(EnemyState.Attacking);
+            GetComponent<Attack>().SetTarget(target.GetComponent<HealthManager>());
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
-        if (collider.gameObject == target)
+        if (collider.gameObject == target && state != EnemyState.Idle)
         {
             SetState(EnemyState.Walking);
         }

@@ -20,7 +20,9 @@ public class Defense : MonoBehaviour
 
     private void TargetEnter(ICollection<GameObject> enemies, GameObject addedEnemy)
     {
-        attack.targetHealth = addedEnemy.GetComponent<HealthManager>();
+        if (attack.targetHealth == null) {
+            attack.SetTarget(addedEnemy.GetComponent<HealthManager>());
+        }
     }
 
     private void TargetExit(ICollection<GameObject> enemies, GameObject removedEnemy)
@@ -30,7 +32,7 @@ public class Defense : MonoBehaviour
                 .OrderBy((enemy) => Vector3.Distance(enemy.transform.position, gameObject.transform.position))
                 .FirstOrDefault();
 
-            attack.targetHealth = closestEnemy?.GetComponent<HealthManager>();
+            attack.SetTarget(closestEnemy?.GetComponent<HealthManager>());
         }
     }
 
