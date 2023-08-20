@@ -13,11 +13,12 @@ GameObject:
   - component: {fileID: 3911398435306760605}
   - component: {fileID: 1957301086068823479}
   - component: {fileID: 2244631179002411921}
+  - component: {fileID: 1156793161105360925}
   - component: {fileID: 3043548795546708779}
   - component: {fileID: 8497842244592689227}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681fbc6a9b59a616388b26216780da31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetHealth: {fileID: 0}
   attackCooldown: 0.5
+  damage: 10
 --- !u!114 &2244631179002411921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +94,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpCooldown: 1
+--- !u!114 &1156793161105360925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3509487019743703083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44a044ac2751bb5ba9f6aec3485e2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  damageAudioClip: {fileID: 0}
+  deathAudioClip: {fileID: 0}
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &3043548795546708779
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private float globalTime = 0;
-    private float time = 0;
     public float spawnInterval = 2f;
     public GameObject enemy;
     public GameObject target;
+    private Timer spawnTimer;
 
     void Start()
     {
+        spawnTimer = new Timer(spawnInterval);
+        spawnTimer.onTick.AddListener(SpawnEnemy);
         target.GetComponent<HealthManager>().onDeath.AddListener(() => {
             enabled = false;
         });
@@ -20,20 +21,16 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;
-        // globalTime += Time.deltaTime;
-        // if (globalTime > 10f) {
-        //     enabled = false;
-        // }
-        if (time > spawnInterval)
-        {
-            time = 0;
-            SpawnEnemy();
-        }
+        spawnTimer.Update(Time.deltaTime);
     }
 
     private void SpawnEnemy() {
         Enemy newEnemy = Instantiate(enemy, transform.position, transform.rotation).GetComponent<Enemy>();
         newEnemy.target = target;
+    }
+
+    void OnDestroy() {
+        if (spawnTimer != null)
+            spawnTimer.onTick.RemoveListener(SpawnEnemy);
     }
 }

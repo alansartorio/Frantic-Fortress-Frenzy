@@ -8,24 +8,25 @@ public class Enemy : MonoBehaviour
     private EnemyState state;
     public GameObject target;
     private EnemyChase chaseScript;
-    private EnemyAttack attackScript;
+    private Attack attackScript;
     private EnemyIdle idleScript;
 
     void Start()
     {
         chaseScript = GetComponent<EnemyChase>();
-        attackScript = GetComponent<EnemyAttack>();
+        attackScript = GetComponent<Attack>();
         idleScript = GetComponent<EnemyIdle>();
-        target.GetComponent<HealthManager>().onDeath.AddListener(() => {
+        var targetHealth = target.GetComponent<HealthManager>();
+        targetHealth.onDeath.AddListener(() => {
             GetComponent<Collider>().enabled = false;
             SetState(EnemyState.Idle);
         });
+        GetComponent<Attack>().targetHealth = targetHealth;
         SetState(EnemyState.Walking);
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(collider.gameObject);
         if (collider.gameObject == target)
         {
             SetState(EnemyState.Attacking);
