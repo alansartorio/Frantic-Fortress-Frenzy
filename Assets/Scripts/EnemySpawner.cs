@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnTimer = new Timer(spawnInterval);
         spawnTimer.onTick.AddListener(SpawnEnemy);
-        target.GetComponent<HealthManager>().onDeath.AddListener(() => {
+        target.GetComponent<HealthManager>().onDeath.AddListener((_) => {
             enabled = false;
         });
     }

@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
         attackScript = GetComponent<Attack>();
         idleScript = GetComponent<EnemyIdle>();
         var targetHealth = target.GetComponent<HealthManager>();
-        targetHealth.onDeath.AddListener(() => {
+        targetHealth.onDeath.AddListener((_) => {
             GetComponent<Collider>().enabled = false;
             SetState(EnemyState.Idle);
         });

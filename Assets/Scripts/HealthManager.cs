@@ -6,8 +6,8 @@ using UnityEngine.Events;
 public class HealthManager : MonoBehaviour
 {
     public float health;
-    public UnityEvent onTakeDamage;
-    public UnityEvent onDeath;
+    public UnityEvent<HealthManager> onTakeDamage;
+    public UnityEvent<HealthManager> onDeath;
 
     public bool Dead
     {
@@ -30,11 +30,11 @@ public class HealthManager : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
-            onDeath.Invoke();
+            onDeath.Invoke(this);
         }
         else
         {
-            onTakeDamage.Invoke();
+            onTakeDamage.Invoke(this);
         }
     }
 }

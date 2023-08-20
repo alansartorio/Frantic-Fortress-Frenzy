@@ -22,12 +22,12 @@ public class EntityAudioManager : MonoBehaviour
 
     }
 
-    void PlayOnDeathSound()
+    void PlayOnDeathSound(HealthManager _)
     {
         audioSource.PlayOneShot(deathAudioClip, 0.7f);
     }
 
-    void PlayOnTakeDamageSound()
+    void PlayOnTakeDamageSound(HealthManager _)
     {
         audioSource.PlayOneShot(damageAudioClip, 0.7f);
     }
