@@ -535,7 +535,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1057299935490342736}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &882992928
+--- !u!114 &882992929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -544,11 +544,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 882992923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 290cd2578cfd65a0ebb020fcb51cc421, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ad8fd558c325ad149f14609f3123a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAudioClip: {fileID: 8300000, guid: 046e2d2164dd37722b37a3f945a143e2, type: 3}
-  deathAudioClip: {fileID: 8300000, guid: 6a3e52193f4441d7b8a738c744523861, type: 3}
+  targetTag: Enemy
+  onTargetEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onTargetExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1043960633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3427488365040862115, guid: 93206730b0f0cdd14bc4ac410e1b82ff,
@@ -606,6 +611,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad8fd558c325ad149f14609f3123a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTag: 
+  onTargetEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onTargetExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1047370324
 Transform:
   m_ObjectHideFlags: 0
@@ -930,8 +942,8 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4740948042205515176, guid: 605d7ca32690a34859566d1715a10afa,
         type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 882992928}
+      insertIndex: 3
+      addedObject: {fileID: 882992929}
   m_SourcePrefab: {fileID: 100100000, guid: 605d7ca32690a34859566d1715a10afa, type: 3}
 --- !u!1001 &4149147173803777573
 PrefabInstance:

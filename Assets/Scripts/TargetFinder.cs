@@ -6,7 +6,7 @@ using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Defense : MonoBehaviour
+public class TargetFinder : MonoBehaviour
 {
     private readonly LinkedList<GameObject> targets = new();
     public string targetTag;
