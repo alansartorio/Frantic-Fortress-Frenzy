@@ -8,6 +8,7 @@ public class Defense : MonoBehaviour
 {
     private TargetFinder targetFinder;
     private Attack attack;
+    public GameObject barrel;
 
     void Start()
     {
@@ -44,5 +45,8 @@ public class Defense : MonoBehaviour
 
     void Update()
     {
+        if (attack.targetHealth != null) {
+            barrel.transform.LookAt(attack.targetHealth.transform);
+        }
     }
 }
