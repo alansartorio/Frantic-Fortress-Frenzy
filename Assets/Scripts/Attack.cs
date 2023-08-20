@@ -22,7 +22,8 @@ public class Attack : MonoBehaviour
 
     void Execute()
     {
-        targetHealth.ApplyDamage(damage);
+        if (targetHealth != null)
+            targetHealth.ApplyDamage(damage);
     }
 
     void OnDestroy()

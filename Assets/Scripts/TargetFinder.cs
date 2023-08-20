@@ -17,31 +17,37 @@ public class TargetFinder : MonoBehaviour
     {
     }
 
+    private bool IsEnemy(GameObject gameObject)
+    {
+        return gameObject.tag == targetTag;
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(targetTag))
+        if (IsEnemy(other.gameObject))
         {
             other.gameObject.GetComponent<HealthManager>().onDeath.AddListener(TargetDied);
-            onTargetEnter.Invoke(targets.AsReadOnlyCollection(), other.gameObject);
             targets.AddLast(other.gameObject);
+            onTargetEnter.Invoke(targets.AsReadOnlyCollection(), other.gameObject);
         }
     }
 
-    void TargetDied(HealthManager healthManager) {
+    void TargetDied(HealthManager healthManager)
+    {
         RemoveTargetFromList(healthManager.gameObject);
     }
 
     void RemoveTargetFromList(GameObject enemy)
     {
-        onTargetExit.Invoke(targets.AsReadOnlyCollection(), enemy);
         var node = targets.Find(enemy);
         node.Value.GetComponent<HealthManager>().onDeath.RemoveListener(TargetDied);
         targets.Remove(node);
+        onTargetExit.Invoke(targets.AsReadOnlyCollection(), enemy);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (IsEnemy(other.gameObject))
         {
             RemoveTargetFromList(other.gameObject);
         }

@@ -3,8 +3,8 @@ using UnityEngine.Events;
 
 public class Timer
 {
-    public UnityEvent onTick = new UnityEvent();
-    private float period;
+    public UnityEvent onTick = new();
+    private readonly float period;
     private float time = 0;
 
     public Timer(float period)
