@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    private Health targetHealth;
+    private HealthManager targetHealth;
     private float time = 0;
     public float attackCooldown = 0.5f;
 
     void Start()
     {
-        targetHealth = GetComponent<Enemy>().target.GetComponent<Health>();
+        targetHealth = GetComponent<Enemy>().target.GetComponent<HealthManager>();
     }
 
     void Update()
@@ -27,9 +27,5 @@ public class EnemyAttack : MonoBehaviour
     void Attack()
     {
         targetHealth.ApplyDamage(10);
-        if (targetHealth.Dead)
-        {
-            GetComponent<Enemy>().SetState(EnemyState.Idle);
-        }
     }
 }

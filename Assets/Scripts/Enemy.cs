@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
     {
         chaseScript = GetComponent<EnemyChase>();
         attackScript = GetComponent<EnemyAttack>();
+        target.GetComponent<HealthManager>().onDeath.AddListener(() => {
+            SetState(EnemyState.Idle);
+        });
         SetState(EnemyState.Walking);
     }
 
