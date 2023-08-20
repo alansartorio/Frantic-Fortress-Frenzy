@@ -6,9 +6,7 @@ using UnityEngine.Events;
 public class HealthManager : MonoBehaviour
 {
     public float health;
-    public AudioClip damageAudioClip;
-    public AudioClip deathAudioClip;
-    private AudioSource audioSource;
+    public UnityEvent onTakeDamage;
     public UnityEvent onDeath;
 
     public bool Dead
@@ -19,7 +17,6 @@ public class HealthManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -34,11 +31,10 @@ public class HealthManager : MonoBehaviour
         {
             health = 0;
             onDeath.Invoke();
-            audioSource.PlayOneShot(deathAudioClip, 0.7f);
         }
         else
         {
-            audioSource.PlayOneShot(damageAudioClip, 0.7f);
+            onTakeDamage.Invoke();
         }
     }
 }
