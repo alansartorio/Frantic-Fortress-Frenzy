@@ -15,7 +15,7 @@ public class EnemyChase : MonoBehaviour
         targetRigidbody = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 delta3 = targetTransform.position - transform.position;
         var delta = new Vector2(delta3.x, delta3.z);
@@ -28,6 +28,7 @@ public class EnemyChase : MonoBehaviour
         var angle = Vector2.SignedAngle(forward, delta);
 
         targetRigidbody.AddTorque(Vector3.up * angle * -0.01f);
+        Debug.Log(forward3);
         targetRigidbody.AddForce(forward3 * speed, ForceMode.Force);
         // targetRigidbody.AddForce(new Vector3(direction.x, 0, direction.y) * speed, ForceMode.Force);
     }

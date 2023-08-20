@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2f9c45235fe05a98d2e43ccc97c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
 --- !u!114 &1957301086068823479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +395,7 @@ Rigidbody:
   m_GameObject: {fileID: 3509487019743703083}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 0.5
   m_AngularDrag: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -672,7 +672,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3953029169085185613}
-  m_Material: {fileID: 13400000, guid: 3dfa2c22a1ded4b37b6a9f5d2093f754, type: 2}
+  m_Material: {fileID: 13400000, guid: 71fb98e9de96658f58a6648a6fb90c70, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
