@@ -9,12 +9,15 @@ public class Enemy : MonoBehaviour
     public GameObject target;
     private EnemyChase chaseScript;
     private EnemyAttack attackScript;
+    private EnemyIdle idleScript;
 
     void Start()
     {
         chaseScript = GetComponent<EnemyChase>();
         attackScript = GetComponent<EnemyAttack>();
+        idleScript = GetComponent<EnemyIdle>();
         target.GetComponent<HealthManager>().onDeath.AddListener(() => {
+            GetComponent<Collider>().enabled = false;
             SetState(EnemyState.Idle);
         });
         SetState(EnemyState.Walking);
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour
     {
         chaseScript.enabled = state == EnemyState.Walking;
         attackScript.enabled = state == EnemyState.Attacking;
+        idleScript.enabled = state == EnemyState.Idle;
     }
 
     public void SetState(EnemyState state)

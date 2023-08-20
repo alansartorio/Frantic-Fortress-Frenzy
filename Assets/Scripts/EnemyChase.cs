@@ -28,6 +28,7 @@ public class EnemyChase : MonoBehaviour
         var angle = Vector2.SignedAngle(forward, delta);
 
         targetRigidbody.AddTorque(Vector3.up * angle * -0.01f);
-        targetRigidbody.AddForce(new Vector3(direction.x, 0, direction.y) * speed, ForceMode.Force);
+        targetRigidbody.AddForce(forward3 * speed, ForceMode.Force);
+        // targetRigidbody.AddForce(new Vector3(direction.x, 0, direction.y) * speed, ForceMode.Force);
     }
 }
