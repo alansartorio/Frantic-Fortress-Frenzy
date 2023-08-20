@@ -21,6 +21,10 @@ public class Enemy : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             SetState(EnemyState.Idle);
         });
+
+        GetComponent<HealthManager>().onDeath.AddListener((_) => {
+            Destroy(gameObject);
+        });
         GetComponent<Attack>().targetHealth = targetHealth;
         SetState(EnemyState.Walking);
     }

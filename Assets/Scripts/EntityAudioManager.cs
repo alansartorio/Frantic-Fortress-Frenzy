@@ -24,7 +24,15 @@ public class EntityAudioManager : MonoBehaviour
 
     void PlayOnDeathSound(HealthManager _)
     {
-        audioSource.PlayOneShot(deathAudioClip, 0.7f);
+        var sound = new GameObject("Death Sound");
+        sound.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        var source = sound.AddComponent<AudioSource>();
+        source.clip = deathAudioClip;
+        source.playOnAwake = false;
+        source.volume = 0.7f;
+        source.Play();
+        Destroy(sound, 2f);
+        // audioSource.PlayOneShot(deathAudioClip, 0.7f);
     }
 
     void PlayOnTakeDamageSound(HealthManager _)

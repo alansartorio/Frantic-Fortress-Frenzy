@@ -643,7 +643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetHealth: {fileID: 0}
   attackCooldown: 0.1
-  damage: 1
+  damage: 5
 --- !u!4 &1464676746 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3427488365040862115, guid: 93206730b0f0cdd14bc4ac410e1b82ff,
