@@ -9,6 +9,7 @@ public class Defense : MonoBehaviour
     private TargetFinder targetFinder;
     private Attack attack;
     public GameObject barrel;
+    public AudioClip shotSound;
 
     void Start()
     {
@@ -17,12 +18,19 @@ public class Defense : MonoBehaviour
 
         targetFinder.onTargetEnter.AddListener(TargetEnter);
         targetFinder.onTargetExit.AddListener(TargetExit);
+
+        var audio = GetComponent<AudioSource>();
+
+        GetComponent<Attack>().onAttack.AddListener(() => {
+            audio.PlayOneShot(shotSound);
+        });
     }
 
     private void TargetEnter(ICollection<GameObject> enemies, GameObject addedEnemy)
     {
         if (attack.targetHealth == null) {
             attack.SetTarget(addedEnemy.GetComponent<HealthManager>());
+            barrel.transform.LookAt(attack.targetHealth.transform);
         }
     }
 

@@ -24,6 +24,7 @@ public class EntityAudioManager : MonoBehaviour
 
     void PlayOnDeathSound(HealthManager _)
     {
+        if (deathAudioClip == null) return;
         var sound = new GameObject("Death Sound");
         sound.transform.SetPositionAndRotation(transform.position, transform.rotation);
         var source = sound.AddComponent<AudioSource>();
@@ -37,6 +38,7 @@ public class EntityAudioManager : MonoBehaviour
 
     void PlayOnTakeDamageSound(HealthManager _)
     {
+        if (damageAudioClip == null) return;
         audioSource.PlayOneShot(damageAudioClip, 0.7f);
     }
 

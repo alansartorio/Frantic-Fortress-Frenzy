@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Attack : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Attack : MonoBehaviour
     public float damage = 10f;
     public bool resetOnTargetLost = true;
     private Timer timer;
+    public UnityEvent onAttack;
 
     void Awake()
     {
@@ -24,8 +26,8 @@ public class Attack : MonoBehaviour
 
     void Execute()
     {
-        if (targetHealth != null)
-            targetHealth.ApplyDamage(damage);
+        targetHealth?.ApplyDamage(damage);
+        onAttack.Invoke();
     }
 
     public void SetTarget(HealthManager target)

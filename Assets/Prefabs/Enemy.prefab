@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290cd2578cfd65a0ebb020fcb51cc421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAudioClip: {fileID: 8300000, guid: 046e2d2164dd37722b37a3f945a143e2, type: 3}
+  damageAudioClip: {fileID: 0}
   deathAudioClip: {fileID: 8300000, guid: 6a3e52193f4441d7b8a738c744523861, type: 3}
 --- !u!114 &7273414640965052949
 MonoBehaviour:
@@ -99,6 +99,9 @@ MonoBehaviour:
   attackCooldown: 0.5
   damage: 10
   resetOnTargetLost: 1
+  onAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2244631179002411921
 MonoBehaviour:
   m_ObjectHideFlags: 0

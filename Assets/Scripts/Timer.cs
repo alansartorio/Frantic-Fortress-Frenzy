@@ -22,6 +22,7 @@ public class Timer
     public void Resume()
     {
         playing = true;
+        hold = false;
     }
 
     public void Hold() {
@@ -31,6 +32,7 @@ public class Timer
     public void Pause()
     {
         playing = false;
+        hold = false;
     }
 
     public void Stop()
