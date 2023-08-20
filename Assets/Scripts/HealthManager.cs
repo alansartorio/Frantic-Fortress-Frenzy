@@ -5,9 +5,11 @@ using UnityEngine.Events;
 
 public class HealthManager : MonoBehaviour
 {
+    public float maxHealth;
     public float health;
     public UnityEvent<HealthManager> onTakeDamage;
     public UnityEvent<HealthManager> onDeath;
+    public UnityEvent<HealthManager> onHealthChange;
 
     public bool Dead
     {
@@ -17,6 +19,7 @@ public class HealthManager : MonoBehaviour
 
     void Start()
     {
+        health = maxHealth;
     }
 
     void Update()
@@ -36,5 +39,6 @@ public class HealthManager : MonoBehaviour
         {
             onTakeDamage.Invoke(this);
         }
+        onHealthChange.Invoke(this);
     }
 }
