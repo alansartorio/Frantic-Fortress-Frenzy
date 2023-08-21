@@ -7,7 +7,7 @@ public class SingleDefense : Defense
     public override void TargetEnter(ICollection<GameObject> enemies, GameObject addedEnemy)
     {
         if (attack.targetsHealth.Count != 0) return;
-        
+
         attack.UpdateTarget(UtilityEnumerable.Once(addedEnemy.GetComponent<HealthManager>()), Attack.TargetAction.Add);
     }
 
@@ -20,6 +20,7 @@ public class SingleDefense : Defense
             .OrderBy((enemy) => Vector3.Distance(enemy.transform.position, gameObject.transform.position))
             .FirstOrDefault();
 
-        attack.UpdateTarget(UtilityEnumerable.Once(removedEnemy.GetComponent<HealthManager>()), Attack.TargetAction.Add);
-}
+        attack.UpdateTarget(UtilityEnumerable.Once(removedEnemy.GetComponent<HealthManager>()),
+            Attack.TargetAction.Remove);
+    }
 }

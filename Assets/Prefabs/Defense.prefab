@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 117257832461780560}
   - component: {fileID: 7709545115547004765}
   - component: {fileID: 975135597016879503}
-  - component: {fileID: 3462634616774378125}
   - component: {fileID: 7474524510746244221}
   - component: {fileID: 4412177706791127121}
+  - component: {fileID: 1904247690413991531}
   - component: {fileID: 4687542409185068219}
   - component: {fileID: 4686917972334598420}
   - component: {fileID: 8580395294823413375}
@@ -71,7 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681fbc6a9b59a616388b26216780da31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetHealth: {fileID: 0}
   attackOnStart: 1
   attackCooldown: 0.1
   damage: 3
@@ -94,19 +93,6 @@ MonoBehaviour:
   onTargetChange:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3462634616774378125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5086520888769377624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d9221f609decdf5fb20a17c886d604f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shotSound: {fileID: 8300000, guid: ad12747e1597b78be841e04728dcdee4, type: 3}
 --- !u!114 &7474524510746244221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +119,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrel: {fileID: 7399641821086826633}
+--- !u!114 &1904247690413991531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5086520888769377624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc7e23aa57027fcf807e0b9a394b112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 0}
+  shotSound: {fileID: 0}
 --- !u!135 &4687542409185068219
 SphereCollider:
   m_ObjectHideFlags: 0

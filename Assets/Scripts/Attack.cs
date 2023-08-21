@@ -36,10 +36,12 @@ public class Attack : MonoBehaviour
 
     private void Execute()
     {
-        foreach (HealthManager targetHealth in targetsHealth)
-        {
-            targetHealth.ApplyDamage(damage);
-        }
+        // TODO: Improve efficiency.
+        // When applying damage, the entity might die, so it will call UpdateTarget modifying targetsHealth.
+        // That prints an error because you shouldn't modify the list while iterating.
+        targetsHealth
+            .ToList()
+            .ForEach(t => t.ApplyDamage(damage));
         onAttack.Invoke();
     }
 
@@ -57,7 +59,8 @@ public class Attack : MonoBehaviour
                 targetsHealth.Clear();
                 targetsHealth.AddLast(targets.First());
                 break;
-        }        
+        }
+
         if (targetsHealth.Any())
         {
             _timer.Resume();
