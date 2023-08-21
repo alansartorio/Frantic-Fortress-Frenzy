@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18029538, g: 0.22572687, b: 0.3069297, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -200,6 +200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Defense (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086520888769377624, guid: 6b0da15827482ca15b7072e284d204ed,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8580395294823413375, guid: 6b0da15827482ca15b7072e284d204ed,
         type: 3}
@@ -1092,7 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d2d2254ec48fe4b8fd638c45871521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  cameraComponent: {fileID: 0}
   panSpeed: 10
   zoomSpeed: 10
   enableMouseRotate: 1
@@ -2488,6 +2493,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740948042205515176, guid: 605d7ca32690a34859566d1715a10afa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6790138063490909567, guid: 605d7ca32690a34859566d1715a10afa,
         type: 3}

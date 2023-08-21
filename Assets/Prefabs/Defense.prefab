@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 4687542409185068219}
   - component: {fileID: 4686917972334598420}
   - component: {fileID: 8580395294823413375}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Defense
   m_TagString: Untagged
   m_Icon: {fileID: 0}
