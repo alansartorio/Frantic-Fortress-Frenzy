@@ -42,6 +42,8 @@ namespace TDTK
         public float minRotateAngle = 10;
         public float maxRotateAngle = 89;
 
+        public float initialOrthograficZoom = 13f;
+
         public bool avoidClipping = false;
         private bool obstacle = false;
 
@@ -65,6 +67,7 @@ namespace TDTK
             instance = this;
 
             cameraComponent = Camera.main;
+
         }
 
         void Start()
@@ -76,7 +79,10 @@ namespace TDTK
             minZoomDistance = Mathf.Max(1, minZoomDistance);
 
             currentZoom = cameraComponent.transform.localPosition.z;
-
+            if (cameraComponent.orthographic)
+            {
+                cameraComponent.orthographicSize = initialOrthograficZoom;
+            }
         }
 
         void Update()

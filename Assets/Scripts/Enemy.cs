@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     private EnemyState state;
     public GameObject target;
+    public EnemyPath path;
     private EnemyChase chaseScript;
     private Attack attackScript;
     private EnemyIdle idleScript;
@@ -17,12 +18,14 @@ public class Enemy : MonoBehaviour
         attackScript = GetComponent<Attack>();
         idleScript = GetComponent<EnemyIdle>();
         var targetHealth = target.GetComponent<HealthManager>();
-        targetHealth.onDeath.AddListener((_) => {
+        targetHealth.onDeath.AddListener((_) =>
+        {
             SetState(EnemyState.Idle);
         });
 
         GetComponent<Attack>().onTargetChange.Invoke(null);
-        GetComponent<HealthManager>().onDeath.AddListener((_) => {
+        GetComponent<HealthManager>().onDeath.AddListener((_) =>
+        {
             Destroy(gameObject);
         });
         SetState(EnemyState.Walking);
