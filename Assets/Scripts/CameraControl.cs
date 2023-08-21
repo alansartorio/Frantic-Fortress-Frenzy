@@ -15,7 +15,7 @@ namespace TDTK
         private float initialRotX;
         private float initialRotY;
 
-        public Camera camera;
+        public Camera cameraComponent;
 
         public float panSpeed = 5;
         public float zoomSpeed = 5;
@@ -64,7 +64,7 @@ namespace TDTK
 
             instance = this;
 
-            camera = Camera.main;
+            cameraComponent = Camera.main;
         }
 
         void Start()
@@ -75,7 +75,7 @@ namespace TDTK
 
             minZoomDistance = Mathf.Max(1, minZoomDistance);
 
-            currentZoom = camera.transform.localPosition.z;
+            currentZoom = cameraComponent.transform.localPosition.z;
 
         }
 
@@ -179,9 +179,9 @@ namespace TDTK
                 }
             }
 
-            if (camera.orthographic)
+            if (cameraComponent.orthographic)
             {
-                camera.orthographicSize = -currentZoom;
+                cameraComponent.orthographicSize = -currentZoom;
             }
             else
             {
@@ -195,20 +195,20 @@ namespace TDTK
 
                     if (!obstacle)
                     {
-                        float camZ = Mathf.Lerp(camera.transform.localPosition.z, currentZoom, Time.deltaTime * 4);
-                        camera.transform.localPosition = new Vector3(camera.transform.localPosition.x, camera.transform.localPosition.y, camZ);
+                        float camZ = Mathf.Lerp(cameraComponent.transform.localPosition.z, currentZoom, Time.deltaTime * 4);
+                        cameraComponent.transform.localPosition = new Vector3(cameraComponent.transform.localPosition.x, cameraComponent.transform.localPosition.y, camZ);
                     }
                     else
                     {
                         dist = Vector3.Distance(hit.point, thisT.position) * 0.85f;
-                        float camZ = Mathf.Lerp(camera.transform.localPosition.z, -dist, Time.deltaTime * 50);
-                        camera.transform.localPosition = new Vector3(camera.transform.localPosition.x, camera.transform.localPosition.y, camZ);
+                        float camZ = Mathf.Lerp(cameraComponent.transform.localPosition.z, -dist, Time.deltaTime * 50);
+                        cameraComponent.transform.localPosition = new Vector3(cameraComponent.transform.localPosition.x, cameraComponent.transform.localPosition.y, camZ);
                     }
                 }
                 else
                 {
-                    float camZ = Mathf.Lerp(camera.transform.localPosition.z, currentZoom, Time.deltaTime * 4);
-                    camera.transform.localPosition = new Vector3(camera.transform.localPosition.x, camera.transform.localPosition.y, camZ);
+                    float camZ = Mathf.Lerp(cameraComponent.transform.localPosition.z, currentZoom, Time.deltaTime * 4);
+                    cameraComponent.transform.localPosition = new Vector3(cameraComponent.transform.localPosition.x, cameraComponent.transform.localPosition.y, camZ);
                 }
             }
 
