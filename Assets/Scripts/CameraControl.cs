@@ -139,29 +139,29 @@ namespace TDTK
                 if (Input.GetButton("Horizontal"))
                 {
                     Vector3 dir = transform.InverseTransformDirection(direction * Vector3.right);
-                    thisT.Translate(dir * panSpeed * deltaT * Input.GetAxisRaw("Horizontal"));
+                    thisT.Translate(dir * (panSpeed * deltaT * Input.GetAxisRaw("Horizontal")));
                 }
 
                 if (Input.GetButton("Vertical"))
                 {
                     Vector3 dir = transform.InverseTransformDirection(direction * Vector3.forward);
-                    thisT.Translate(dir * panSpeed * deltaT * Input.GetAxisRaw("Vertical"));
+                    thisT.Translate(dir * (panSpeed * deltaT * Input.GetAxisRaw("Vertical")));
                 }
             }
             if (enableMousePanning)
             {
                 Vector3 mousePos = Input.mousePosition;
                 Vector3 dirHor = transform.InverseTransformDirection(direction * Vector3.right);
-                if (mousePos.x <= 0) thisT.Translate(dirHor * panSpeed * deltaT * -3);
-                else if (mousePos.x <= mousePanningZoneWidth) thisT.Translate(dirHor * panSpeed * deltaT * -1);
-                else if (mousePos.x >= Screen.width) thisT.Translate(dirHor * panSpeed * deltaT * 3);
-                else if (mousePos.x > Screen.width - mousePanningZoneWidth) thisT.Translate(dirHor * panSpeed * deltaT * 1);
+                if (mousePos.x <= 0) thisT.Translate(dirHor * (panSpeed * deltaT * -3));
+                else if (mousePos.x <= mousePanningZoneWidth) thisT.Translate(dirHor * (panSpeed * deltaT * -1));
+                else if (mousePos.x >= Screen.width) thisT.Translate(dirHor * (panSpeed * deltaT * 3));
+                else if (mousePos.x > Screen.width - mousePanningZoneWidth) thisT.Translate(dirHor * (panSpeed * deltaT * 1));
 
                 Vector3 dirVer = transform.InverseTransformDirection(direction * Vector3.forward);
-                if (mousePos.y <= 0) thisT.Translate(dirVer * panSpeed * deltaT * -3);
-                else if (mousePos.y <= mousePanningZoneWidth) thisT.Translate(dirVer * panSpeed * deltaT * -1);
-                else if (mousePos.y >= Screen.height) thisT.Translate(dirVer * panSpeed * deltaT * 3);
-                else if (mousePos.y > Screen.height - mousePanningZoneWidth) thisT.Translate(dirVer * panSpeed * deltaT * 1);
+                if (mousePos.y <= 0) thisT.Translate(dirVer * (panSpeed * deltaT * -3));
+                else if (mousePos.y <= mousePanningZoneWidth) thisT.Translate(dirVer * (panSpeed * deltaT * -1));
+                else if (mousePos.y >= Screen.height) thisT.Translate(dirVer * (panSpeed * deltaT * 3));
+                else if (mousePos.y > Screen.height - mousePanningZoneWidth) thisT.Translate(dirVer * (panSpeed * deltaT * 1));
             }
 
 

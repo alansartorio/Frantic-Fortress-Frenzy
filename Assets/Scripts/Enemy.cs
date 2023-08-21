@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -23,7 +24,6 @@ public class Enemy : MonoBehaviour
             SetState(EnemyState.Idle);
         });
 
-        GetComponent<Attack>().onTargetChange.Invoke(null);
         GetComponent<HealthManager>().onDeath.AddListener((_) =>
         {
             Destroy(gameObject);
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
         if (collider.gameObject == target && state != EnemyState.Idle)
         {
             SetState(EnemyState.Attacking);
-            GetComponent<Attack>().onTargetChange.Invoke(target.GetComponent<HealthManager>());
+            GetComponent<Attack>().UpdateTarget(UtilityEnumerable.Once(target.GetComponent<HealthManager>()), Attack.TargetAction.ClearAndAdd);
         }
     }
 

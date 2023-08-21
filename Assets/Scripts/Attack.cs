@@ -1,61 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Attack : MonoBehaviour
 {
-    public HealthManager targetHealth;
+    public readonly LinkedList<HealthManager> targetsHealth = new();
     public bool attackOnStart = true;
     public float attackCooldown = 0.5f;
     public float damage = 10f;
     public bool resetOnTargetLost = true;
-    private Timer timer;
+    private Timer _timer;
     public UnityEvent onAttack;
-    public UnityEvent<HealthManager> onTargetChange;
+    public UnityEvent<ICollection<HealthManager>> onTargetChange;
 
-    void Awake()
+    public enum TargetAction
     {
-        timer = new Timer(attackCooldown, attackOnStart);
-        timer.onTick.AddListener(Execute);
-
-        onTargetChange.AddListener((healthManager) => SetTarget(healthManager));
+        Add,
+        Remove,
+        ClearAndAdd
     }
 
-    void Update()
+    private void Awake()
     {
-        timer.Update(Time.deltaTime);
+        _timer = new Timer(attackCooldown, attackOnStart);
+        _timer.onTick.AddListener(Execute);
     }
 
-    void Execute()
+    private void Update()
     {
-        targetHealth?.ApplyDamage(damage);
+        _timer.Update(Time.deltaTime);
+    }
+
+    private void Execute()
+    {
+        foreach (HealthManager targetHealth in targetsHealth)
+        {
+            targetHealth.ApplyDamage(damage);
+        }
         onAttack.Invoke();
     }
 
-    private void SetTarget(HealthManager target)
+    public void UpdateTarget(IEnumerable<HealthManager> targets, TargetAction command)
     {
-        targetHealth = target;
-        if (target == null)
+        switch (command)
         {
-            if (resetOnTargetLost)
-            {
-                timer.Reset();
-            }
-            else
-            {
-                timer.Hold();
-            }
+            case TargetAction.Add:
+                targets.ForEach(t => targetsHealth.AddLast(t));
+                break;
+            case TargetAction.Remove:
+                targets.ForEach(t => targetsHealth.Remove(t));
+                break;
+            case TargetAction.ClearAndAdd:
+                targetsHealth.Clear();
+                targetsHealth.AddLast(targets.First());
+                break;
+        }        
+        if (targetsHealth.Any())
+        {
+            _timer.Resume();
         }
         else
         {
-            timer.Resume();
+            if (resetOnTargetLost)
+            {
+                _timer.Reset();
+            }
+            else
+            {
+                _timer.Hold();
+            }
         }
+
+        onTargetChange.Invoke(targetsHealth.AsReadOnlyCollection());
     }
 
     void OnDestroy()
     {
-        if (timer != null)
-            timer.onTick.RemoveListener(Execute);
+        _timer?.onTick.RemoveListener(Execute);
     }
 }

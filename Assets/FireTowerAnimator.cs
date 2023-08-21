@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -8,17 +9,18 @@ public class FireTowerAnimator : MonoBehaviour
     private Attack attack;
     private GameObject target;
     public GameObject barrel;
-    
+
     void Start()
     {
         attack = GetComponent<Attack>();
-        attack.onTargetChange.AddListener((newTarget) => target = newTarget?.gameObject);
+        attack.onTargetChange.AddListener((targets) => target = targets.Any() ? targets.First().gameObject : null);
     }
 
     void Update()
     {
-        if (target != null) {
-            barrel.transform.LookAt(attack.targetHealth.transform);
+        if (target)
+        {
+            barrel.transform.LookAt(target.transform);
         }
     }
 }
