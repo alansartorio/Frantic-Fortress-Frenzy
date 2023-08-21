@@ -12,11 +12,14 @@ public class Attack : MonoBehaviour
     public bool resetOnTargetLost = true;
     private Timer timer;
     public UnityEvent onAttack;
+    public UnityEvent<HealthManager> onTargetChange;
 
     void Awake()
     {
         timer = new Timer(attackCooldown, attackOnStart);
         timer.onTick.AddListener(Execute);
+
+        onTargetChange.AddListener((healthManager) => SetTarget(healthManager));
     }
 
     void Update()
@@ -30,7 +33,7 @@ public class Attack : MonoBehaviour
         onAttack.Invoke();
     }
 
-    public void SetTarget(HealthManager target)
+    private void SetTarget(HealthManager target)
     {
         targetHealth = target;
         if (target == null)

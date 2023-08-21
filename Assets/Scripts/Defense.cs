@@ -8,7 +8,6 @@ public class Defense : MonoBehaviour
 {
     private TargetFinder targetFinder;
     private Attack attack;
-    public GameObject barrel;
     public AudioClip shotSound;
 
     void Start()
@@ -29,8 +28,7 @@ public class Defense : MonoBehaviour
     private void TargetEnter(ICollection<GameObject> enemies, GameObject addedEnemy)
     {
         if (attack.targetHealth == null) {
-            attack.SetTarget(addedEnemy.GetComponent<HealthManager>());
-            barrel.transform.LookAt(attack.targetHealth.transform);
+            attack.onTargetChange.Invoke(addedEnemy.GetComponent<HealthManager>());
         }
     }
 
@@ -41,7 +39,7 @@ public class Defense : MonoBehaviour
                 .OrderBy((enemy) => Vector3.Distance(enemy.transform.position, gameObject.transform.position))
                 .FirstOrDefault();
 
-            attack.SetTarget(closestEnemy?.GetComponent<HealthManager>());
+            attack.onTargetChange.Invoke(closestEnemy?.GetComponent<HealthManager>());
         }
     }
 
@@ -49,12 +47,5 @@ public class Defense : MonoBehaviour
     {
         if (targetFinder != null)
             targetFinder.onTargetEnter.RemoveListener(TargetEnter);
-    }
-
-    void Update()
-    {
-        if (attack.targetHealth != null) {
-            barrel.transform.LookAt(attack.targetHealth.transform);
-        }
     }
 }

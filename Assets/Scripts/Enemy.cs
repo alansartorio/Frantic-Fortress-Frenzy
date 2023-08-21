@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
             SetState(EnemyState.Idle);
         });
 
-        GetComponent<Attack>().SetTarget(null);
+        GetComponent<Attack>().onTargetChange.Invoke(null);
         GetComponent<HealthManager>().onDeath.AddListener((_) => {
             Destroy(gameObject);
         });
@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         if (collider.gameObject == target && state != EnemyState.Idle)
         {
             SetState(EnemyState.Attacking);
-            GetComponent<Attack>().SetTarget(target.GetComponent<HealthManager>());
+            GetComponent<Attack>().onTargetChange.Invoke(target.GetComponent<HealthManager>());
         }
     }
 
