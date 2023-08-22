@@ -22,5 +22,8 @@ public class SingleDefense : Defense
 
         attack.UpdateTarget(UtilityEnumerable.Once(removedEnemy.GetComponent<HealthManager>()),
             Attack.TargetAction.Remove);
+        if (closestEnemy != null)
+            attack.UpdateTarget(UtilityEnumerable.Once(closestEnemy.GetComponent<HealthManager>()),
+                Attack.TargetAction.Add);
     }
 }
