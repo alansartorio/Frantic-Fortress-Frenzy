@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Hp Bar
+  - Armor Bar
+  - Shield Bar
   - Enemy
   layers:
   - Default

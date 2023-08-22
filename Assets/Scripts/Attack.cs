@@ -10,7 +10,7 @@ public class Attack : MonoBehaviour
     public readonly LinkedList<HealthManager> targetsHealth = new();
     public bool attackOnStart = true;
     public float attackCooldown = 0.5f;
-    public float damage = 10f;
+    public Health damage = new Health(10f,0f,0f);
     public bool resetOnTargetLost = true;
     private Timer _timer;
     public UnityEvent onAttack;

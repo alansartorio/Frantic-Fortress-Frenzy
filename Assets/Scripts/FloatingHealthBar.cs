@@ -18,10 +18,10 @@ public class FloatingHealthBar : MonoBehaviour
     {
         var enemy = transform.parent.parent;
         var healthManager = enemy.GetComponent<HealthManager>();
-        slider.value = (float)healthManager.health / healthManager.maxHealth;
+        slider.value = (float)healthManager.health.Hp / healthManager.maxHealth.Hp;
         healthManager.onHealthChange.AddListener((healthManager) =>
         {
-            slider.value = (float)healthManager.health / healthManager.maxHealth;
+            slider.value = (float)healthManager.health.Hp / healthManager.maxHealth.Hp;
         });
     }
 
