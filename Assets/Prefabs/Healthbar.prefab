@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8585511445135481687}
   m_Layer: 5
   m_Name: Hp Bar
-  m_TagString: Hp Bar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7938534756148517837}
   m_Layer: 5
   m_Name: Shield Bar
-  m_TagString: Shield Bar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 4243244828331488467}
   m_Layer: 5
   m_Name: Armor Bar
-  m_TagString: Armor Bar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
