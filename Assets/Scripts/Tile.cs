@@ -9,10 +9,7 @@ public class Tile : MonoBehaviour
         set
         {
             occupant = value;
-            occupant.transform.SetParent(transform.parent);
-            occupant.transform.localPosition = Vector3.zero;
-            occupant.transform.localRotation = Quaternion.identity;
-            occupant.transform.localScale = Vector3.one;
+            occupant.transform.SetParent(transform.parent, false);
         }
     }
 

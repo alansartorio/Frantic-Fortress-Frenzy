@@ -16,22 +16,22 @@ PrefabInstance:
     - target: {fileID: 3926337871420191970, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3926337871420191970, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000023841858
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3926337871420191970, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3926337871420191970, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6152019
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3926337871420191970, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 3926337871420191970, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7883696
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3926337871420191970, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
@@ -56,7 +56,7 @@ PrefabInstance:
     - target: {fileID: 3926337871420191970, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -20.945
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3926337871420191970, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
@@ -86,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 8163691116124588010, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
       propertyPath: m_Name
-      value: Sniper Variant
+      value: Sniper
       objectReference: {fileID: 0}
     - target: {fileID: 8561568158843123209, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
