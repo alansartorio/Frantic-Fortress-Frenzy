@@ -65,6 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4203497505828774717, guid: 69207886197a1a2ddaa3b835e830db6b,
         type: 3}
+      propertyPath: damage._hp
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203497505828774717, guid: 69207886197a1a2ddaa3b835e830db6b,
+        type: 3}
       propertyPath: damage._armor
       value: 0
       objectReference: {fileID: 0}
