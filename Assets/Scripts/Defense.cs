@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class Defense : MonoBehaviour
 {
     private TargetFinder targetFinder;
-    public Attack attack;
+    protected Attack attack;
     public AudioClip shotSound;
 
     void Start()

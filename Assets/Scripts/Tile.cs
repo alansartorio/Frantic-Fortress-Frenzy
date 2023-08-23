@@ -1,12 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    void OnMouseEnter()
+    private GameObject occupant;
+    public GameObject Occupant
     {
-        // Debug.Log(String.Format("{0}", transform.position));
+        get => occupant;
+        set
+        {
+            occupant = value;
+            occupant.transform.SetParent(transform.parent, false);
+        }
+    }
+
+    public bool IsOccupied()
+    {
+        return Occupant;
     }
 }

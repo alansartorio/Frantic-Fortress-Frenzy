@@ -22,9 +22,10 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Start()
     {
-        _hpBarImage = transform.Find("Canvas").Find("Hp Bar").GetComponent<Image>();
-        _armorBarImage = transform.Find("Canvas").Find("Armor Bar").GetComponent<Image>();
-        _shieldBarImage = transform.Find("Canvas").Find("Shield Bar").GetComponent<Image>();
+        Transform hbContent = transform.Find("Canvas").Find("Content");
+        _hpBarImage = hbContent.Find("Hp Bar").GetComponent<Image>();
+        _armorBarImage = hbContent.Find("Armor Bar").GetComponent<Image>();
+        _shieldBarImage = hbContent.Find("Shield Bar").GetComponent<Image>();
         var enemy = transform.parent;
         var healthManager = enemy.GetComponent<HealthManager>();
         SetFillValues(healthManager);
