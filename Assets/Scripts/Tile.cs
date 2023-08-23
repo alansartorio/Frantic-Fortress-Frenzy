@@ -1,25 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    GameObject indicator;
-    
-    private void Start()
+    private GameObject occupant;
+    public GameObject Occupant
     {
-        indicator = transform.Find("Indicator").gameObject;
+        get => occupant;
+        set
+        {
+            occupant = value;
+            occupant.transform.SetParent(transform.parent);
+            occupant.transform.localPosition = Vector3.zero;
+            occupant.transform.localRotation = Quaternion.identity;
+            occupant.transform.localScale = Vector3.one;
+        }
     }
 
-    void OnMouseEnter()
+    public bool IsOccupied()
     {
-        indicator.gameObject.SetActive(true);
-        // Debug.Log(String.Format("{0}", transform.position));
-    }
-
-    void OnMouseExit()
-    {
-        indicator.gameObject.SetActive(false);
+        return Occupant;
     }
 }

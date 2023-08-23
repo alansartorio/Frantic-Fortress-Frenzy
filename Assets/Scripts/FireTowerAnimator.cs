@@ -12,8 +12,9 @@ public class FireTowerAnimator : MonoBehaviour
 
     void Start()
     {
-        attack = GetComponent<Attack>();
-        attack.onTargetChange.AddListener((targets) => target = targets.Any() ? targets.First().gameObject : null);
+        attack = GetComponentInParent<Attack>();
+        if (attack)
+            attack.onTargetChange.AddListener((targets) => target = targets.Any() ? targets.First().gameObject : null);
     }
 
     void Update()
