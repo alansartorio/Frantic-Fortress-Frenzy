@@ -9,12 +9,13 @@ public class EnemyChase : MonoBehaviour
     public int currentWaypointIndex = 0;
     private Transform targetTransform;
     private Rigidbody targetRigidbody;
+    public EnemyPath path;
 
 
     void Start()
     {
-        waypoints = GetComponent<Enemy>().path.waypoints;
-        targetTransform = GetComponent<Enemy>().target.GetComponent<Transform>();
+        waypoints = path.waypoints;
+        targetTransform = path.target.GetComponent<Transform>();
         targetRigidbody = GetComponent<Rigidbody>();
     }
 

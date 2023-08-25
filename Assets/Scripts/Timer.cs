@@ -11,12 +11,18 @@ public class Timer
     private bool playing = false;
     private float time = 0;
     private bool hold = false;
+    private string _name = "Default";
 
     public Timer(float period, bool tickOnStart)
     {
         this.period = period;
         this.tickOnStart = tickOnStart;
         Reset();
+    }
+    
+    public Timer(string name, float period, bool tickOnStart) : this(period, tickOnStart)
+    {
+        _name = name;
     }
 
     public void Resume()

@@ -7,7 +7,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private EnemyState state;
-    public GameObject target;
     public EnemyPath path;
     private EnemyChase chaseScript;
     private Attack attackScript;
@@ -16,9 +15,10 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         chaseScript = GetComponent<EnemyChase>();
+        chaseScript.path = path;
         attackScript = GetComponent<Attack>();
         idleScript = GetComponent<EnemyIdle>();
-        var targetHealth = target.GetComponent<HealthManager>();
+        var targetHealth = path.target.GetComponent<HealthManager>();
         targetHealth.onDeath.AddListener((_) =>
         {
             SetState(EnemyState.Idle);
@@ -33,16 +33,16 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject == target && state != EnemyState.Idle)
+        if (collider.gameObject == path.target && state != EnemyState.Idle)
         {
             SetState(EnemyState.Attacking);
-            GetComponent<Attack>().UpdateTarget(UtilityEnumerable.Once(target.GetComponent<HealthManager>()), Attack.TargetAction.ClearAndAdd);
+            GetComponent<Attack>().UpdateTarget(UtilityEnumerable.Once(path.target.GetComponent<HealthManager>()), Attack.TargetAction.ClearAndAdd);
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
-        if (collider.gameObject == target && state != EnemyState.Idle)
+        if (collider.gameObject == path.target && state != EnemyState.Idle)
         {
             SetState(EnemyState.Walking);
         }

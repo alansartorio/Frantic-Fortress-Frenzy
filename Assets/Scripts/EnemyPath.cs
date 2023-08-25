@@ -6,11 +6,11 @@ public class EnemyPath : MonoBehaviour
 {
     public Transform[] waypoints;
     public static float waypointRadius = 2f;
+    public GameObject target;
 
     void Awake()
     {
         waypoints = new Transform[transform.childCount];
-
         for (int i = 0; i < waypoints.Length; i++)
         {
             waypoints[i] = transform.GetChild(i);

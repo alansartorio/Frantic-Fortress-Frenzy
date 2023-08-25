@@ -1,24 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float spawnInterval = 2f;
-    public int maxEnemies = 2;
-    public GameObject enemy;
-    public GameObject target;
-    public GameObject pathObject;
-    private Timer spawnTimer;
-    private int _enemiesSpawned = 0;
+    public static readonly float SpawnInterval = 1f;
+    public static readonly float WaveInterval = 2f;
+    public readonly int enemiesPerWave = 10;
+    [SerializeField] public GameObject[] enemies;
+    public GameObject rawPath;
+    private EnemyPath _path;
+    private Timer _waveTimer;
+    private Timer _spawnTimer;
+    /**
+     * TODO: maybe load several waves in advance to make it better performant
+     */
+    public Wave currentWave;
+
 
     void Start()
     {
-        spawnTimer = new Timer(spawnInterval, false);
-        spawnTimer.Restart();
-        spawnTimer.onTick.AddListener(SpawnEnemy);
-        target.GetComponent<HealthManager>().onDeath.AddListener((_) =>
+        _waveTimer = new Timer("Wave",WaveInterval, false);
+        _waveTimer.Restart();
+        _waveTimer.onTick.AddListener(SpawnWave);
+
+        _spawnTimer = new Timer("Spawn", SpawnInterval, true);
+        _spawnTimer.onTick.AddListener(SpawnNextEnemy);
+        
+        _path = rawPath.GetComponent<EnemyPath>();
+        _path.target.GetComponent<HealthManager>().onDeath.AddListener((_) =>
         {
             enabled = false;
         });
@@ -26,21 +34,42 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        spawnTimer.Update(Time.deltaTime);
+        _waveTimer.Update(Time.deltaTime);
+        _spawnTimer.Update(Time.deltaTime);
     }
 
-    private void SpawnEnemy()
+    private void SpawnWave()
     {
-        if (_enemiesSpawned == maxEnemies) return;
+        _waveTimer.Stop();
+        currentWave = new Wave(enemiesPerWave, enemies);
+        _spawnTimer.Restart();
+    }
+    
+    private void SpawnNextEnemy()
+    {
+        if (currentWave != null)
+        {
+            var nextEnemy = currentWave.GetNextEnemy();
+            if (nextEnemy == null)
+            {
+                currentWave = null;
+                _spawnTimer.Stop();
+                _waveTimer.Restart();
+                return;
+            }
+            SpawnEnemy(nextEnemy);
+        }
+    }
+
+    private void SpawnEnemy(GameObject enemy)
+    {
         Enemy newEnemy = Instantiate(enemy, transform.position, transform.rotation).GetComponent<Enemy>();
-        newEnemy.target = target;
-        newEnemy.path = pathObject.GetComponent<EnemyPath>();
-        _enemiesSpawned += 1;
+        newEnemy.path = _path;
     }
 
     void OnDestroy()
     {
-        if (spawnTimer != null)
-            spawnTimer.onTick.RemoveListener(SpawnEnemy);
+        _waveTimer?.onTick.RemoveListener(SpawnWave);
+        _spawnTimer?.onTick.RemoveListener(SpawnNextEnemy);
     }
 }
