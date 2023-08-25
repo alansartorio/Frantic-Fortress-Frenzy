@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18029538, g: 0.22572687, b: 0.3069297, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
+  target: {fileID: 882992923}
 --- !u!4 &154205613
 Transform:
   m_ObjectHideFlags: 0
@@ -1739,11 +1740,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4089da4ba035ec37ca7c6de080f63bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 0.5
-  maxEnemies: 30
-  enemy: {fileID: 3509487019743703083, guid: 08fe77601e3bd409bab6f24aab7cf33b, type: 3}
-  target: {fileID: 882992923}
-  pathObject: {fileID: 154205611}
+  enemies:
+  - {fileID: 3509487019743703083, guid: 08fe77601e3bd409bab6f24aab7cf33b, type: 3}
+  rawPath: {fileID: 154205611}
 --- !u!4 &1893573203
 Transform:
   m_ObjectHideFlags: 0
