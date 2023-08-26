@@ -4,39 +4,16 @@ using Random = UnityEngine.Random;
 
 public class Wave
 {
-    private readonly int _maxEnemies;
-    private int _spawnCount = 0;
-    private bool _active = true;
-    private readonly GameObject[] _enemies;
+    private readonly int _enemyCount;
+    private readonly GameObject[] _enemyTypes;
 
-    public Wave(int maxEnemies, GameObject[] enemies)
+    public Wave(int enemyCount, GameObject[] enemyTypes)
     {
-        _maxEnemies = maxEnemies;
-        _enemies = new GameObject[maxEnemies];
-        for (int i = 0; i < maxEnemies; i++)
-        {
-            _enemies[i] = enemies[Random.Range(0, enemies.Length)];
-        }
+        _enemyCount = enemyCount;
+        _enemyTypes = new GameObject[enemyCount];
+        enemyTypes.CopyTo(_enemyTypes, 0);
     }
 
-    public GameObject GetNextEnemy()
-    {
-        if (!_active || _spawnCount == _maxEnemies) return null;
-        return _enemies[_spawnCount++];
-    }
-
-    public bool IsActive()
-    {
-        return _active;
-    }
-
-    public void Deactivate()
-    {
-        _active = false;
-    }
-
-    public void Activate()
-    {
-        _active = true;
-    }
+    public GameObject[] EnemyTypes => _enemyTypes;
+    public int EnemyCount => _enemyCount;
 }
