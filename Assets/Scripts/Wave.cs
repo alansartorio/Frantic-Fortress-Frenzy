@@ -10,7 +10,7 @@ public class Wave
     public Wave(int enemyCount, GameObject[] enemyTypes)
     {
         _enemyCount = enemyCount;
-        _enemyTypes = new GameObject[enemyCount];
+        _enemyTypes = new GameObject[enemyTypes.Length];
         enemyTypes.CopyTo(_enemyTypes, 0);
     }
 

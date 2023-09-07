@@ -8,6 +8,7 @@ using UnityEngine.Events;
 [Serializable]
 public class GameDirector : MonoBehaviour
 {
+    [Serializable]
     private enum GameState
     {
         Starting,
@@ -60,7 +61,8 @@ public class GameDirector : MonoBehaviour
     {
         _newWave.AddListener(spawnerInfo.onNewWave);
         _gameOver.AddListener(spawnerInfo.onGameOver);
-        
+        spawnerInfo.enemiesWiped.AddListener(SubWaveCompleted);
+        _spawnCount++;
     }
 
     public void RegisterBase(HealthManager baseHealth)
@@ -74,7 +76,7 @@ public class GameDirector : MonoBehaviour
         _idleSpawns = 0;
         var wave = new Wave(10, _enemies);
         _newWave.Invoke(wave);
-        _waveTimer.Stop();
+        _waveTimer.Pause();
     }
 
     private void StartGame()
@@ -100,7 +102,7 @@ public class GameDirector : MonoBehaviour
     {
         _state = GameState.Rest;
         _rest.Invoke();
-        _waveTimer.Restart();
+        _waveTimer.Resume();
     }
 
     private void GameOver()
