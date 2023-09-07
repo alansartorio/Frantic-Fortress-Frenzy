@@ -5,18 +5,18 @@ using UnityEngine.Events;
 
 public class Timer
 {
-    public UnityEvent onTick = new();
-    private readonly float period;
-    private readonly bool tickOnStart;
-    private bool playing = false;
-    private float time = 0;
-    private bool hold = false;
-    private string _name = "Default";
+    public readonly UnityEvent onTick = new();
+    private readonly float _period;
+    private readonly bool _tickOnStart;
+    private bool _playing = false;
+    private float _time = 0;
+    private bool _hold = false;
+    private readonly string _name = "Default";
 
     public Timer(float period, bool tickOnStart)
     {
-        this.period = period;
-        this.tickOnStart = tickOnStart;
+        this._period = period;
+        this._tickOnStart = tickOnStart;
         Reset();
     }
     
@@ -27,18 +27,18 @@ public class Timer
 
     public void Resume()
     {
-        playing = true;
-        hold = false;
+        _playing = true;
+        _hold = false;
     }
 
     public void Hold() {
-        hold = true;
+        _hold = true;
     }
 
     public void Pause()
     {
-        playing = false;
-        hold = false;
+        _playing = false;
+        _hold = false;
     }
 
     public void Stop()
@@ -49,17 +49,17 @@ public class Timer
 
     public void Update(float deltaTime)
     {
-        if (playing)
+        if (_playing)
         {
-            time += deltaTime;
-            if (hold && time >= period) {
-                hold = false;
+            _time += deltaTime;
+            if (_hold && _time >= _period) {
+                _hold = false;
                 Pause();
                 return;
             }
-            while (time >= period)
+            while (_time >= _period)
             {
-                time -= period;
+                _time -= _period;
                 onTick.Invoke();
             }
         }
@@ -67,12 +67,17 @@ public class Timer
 
     public void Reset()
     {
-        time = tickOnStart ? period : 0;
+        _time = _tickOnStart ? _period : 0;
     }
 
     public void Restart()
     {
         Reset();
         Resume();
+    }
+
+    public override string ToString()
+    {
+        return $"Timer '{_name}': (time: {_time:.3f} | period: {_period:.3f})";
     }
 }
