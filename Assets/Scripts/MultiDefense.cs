@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,9 @@ public class MultiDefense : Defense
     public override void TargetExit(ICollection<GameObject> enemies, GameObject removedEnemy)
     {
         attack.UpdateTarget(UtilityEnumerable.Once(removedEnemy.GetComponent<HealthManager>()), Attack.TargetAction.Remove);
+    }
+    
+    public override void GameUpdate(ICollection<GameObject> enemies)
+    {
     }
 }

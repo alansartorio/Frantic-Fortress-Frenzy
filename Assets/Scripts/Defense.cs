@@ -1,28 +1,27 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using UnityEngine;
 
 public abstract class Defense : MonoBehaviour
 {
-    private TargetFinder targetFinder;
+    private TargetFinder _targetFinder;
     protected Attack attack;
     public AudioClip shotSound;
 
     void Start()
     {
         attack = GetComponent<Attack>();
-        targetFinder = GetComponent<TargetFinder>();
+        _targetFinder = GetComponent<TargetFinder>();
 
-        targetFinder.onTargetEnter.AddListener(TargetEnter);
-        targetFinder.onTargetExit.AddListener(TargetExit);
+        _targetFinder.onTargetEnter.AddListener(TargetEnter);
+        _targetFinder.onTargetExit.AddListener(TargetExit);
+        _targetFinder.onGameUpdate.AddListener(GameUpdate);
 
-        var audio = GetComponent<AudioSource>();
+        var audioSource = GetComponent<AudioSource>();
 
         GetComponent<Attack>().onAttack.AddListener(() =>
         {
-            audio.PlayOneShot(shotSound);
+            audioSource.PlayOneShot(shotSound);
         });
     }
 
@@ -30,9 +29,15 @@ public abstract class Defense : MonoBehaviour
 
     public abstract void TargetExit(ICollection<GameObject> enemies, GameObject removedEnemy);
 
+    public abstract void GameUpdate(ICollection<GameObject> enemies);
+
     void OnDestroy()
     {
-        if (targetFinder != null)
-            targetFinder.onTargetEnter.RemoveListener(TargetEnter);
+        if (_targetFinder != null)
+        {
+            _targetFinder.onTargetEnter.RemoveListener(TargetEnter);
+            _targetFinder.onTargetExit.RemoveListener(TargetExit);
+            _targetFinder.onGameUpdate.RemoveListener(GameUpdate);
+        }
     }
 }

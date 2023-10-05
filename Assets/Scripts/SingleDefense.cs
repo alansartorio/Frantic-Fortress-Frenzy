@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,5 +27,9 @@ public class SingleDefense : Defense
         if (closestEnemy != null)
             attack.UpdateTarget(UtilityEnumerable.Once(closestEnemy.GetComponent<HealthManager>()),
                 Attack.TargetAction.Add);
+    }
+    
+    public override void GameUpdate(ICollection<GameObject> enemies)
+    {
     }
 }

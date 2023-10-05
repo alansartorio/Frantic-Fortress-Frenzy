@@ -12,6 +12,7 @@ public class TargetFinder : MonoBehaviour
     public string targetTag;
     public UnityEvent<ICollection<GameObject>, GameObject> onTargetEnter;
     public UnityEvent<ICollection<GameObject>, GameObject> onTargetExit;
+    public UnityEvent<ICollection<GameObject>> onGameUpdate;
 
     void Start()
     {
@@ -55,5 +56,6 @@ public class TargetFinder : MonoBehaviour
 
     void Update()
     {
+        onGameUpdate.Invoke(targets.AsReadOnlyCollection());
     }
 }
