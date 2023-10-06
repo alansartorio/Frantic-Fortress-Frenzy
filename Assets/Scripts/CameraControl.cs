@@ -24,12 +24,12 @@ public class CameraControl : MonoBehaviour
 
     public int keyRotateSpeed = 10;
 
-    public float minPosX = -10;
-    public float maxPosX = 10;
-
-    public float minPosZ = -10;
-    public float maxPosZ = 10;
-
+    // public float minPosX = -10;
+    // public float maxPosX = 10;
+    //
+    // public float minPosZ = -10;
+    // public float maxPosZ = 10;
+    
     public float minZoomDistance = 8;
     public float maxZoomDistance = 30;
 
@@ -134,13 +134,13 @@ public class CameraControl : MonoBehaviour
             if (Input.GetButton("Horizontal"))
             {
                 Vector3 dir = transform.InverseTransformDirection(direction * Vector3.right);
-                thisT.Translate(dir * (panSpeed * deltaT * Input.GetAxisRaw("Horizontal")));
+                thisT.Translate(dir * (-currentZoom * panSpeed * deltaT * Input.GetAxisRaw("Horizontal")));
             }
 
             if (Input.GetButton("Vertical"))
             {
                 Vector3 dir = transform.InverseTransformDirection(direction * Vector3.forward);
-                thisT.Translate(dir * (panSpeed * deltaT * Input.GetAxisRaw("Vertical")));
+                thisT.Translate(dir * (-currentZoom * panSpeed * deltaT * Input.GetAxisRaw("Vertical")));
             }
         }
         if (enableMousePanning)
@@ -163,7 +163,7 @@ public class CameraControl : MonoBehaviour
         float zoomInput = Input.GetAxis("Mouse ScrollWheel");
         if (zoomInput != 0)
         {
-            currentZoom += zoomSpeed * zoomInput;
+            currentZoom *= Mathf.Pow(zoomSpeed, -zoomInput);
             currentZoom = Mathf.Clamp(currentZoom, -maxZoomDistance, -minZoomDistance);
         }
 
@@ -213,10 +213,10 @@ public class CameraControl : MonoBehaviour
             }
         }
 
-        float x = Mathf.Clamp(thisT.position.x, minPosX, maxPosX);
-        float z = Mathf.Clamp(thisT.position.z, minPosZ, maxPosZ);
+        // float x = Mathf.Clamp(thisT.position.x, minPosX, maxPosX);
+        // float z = Mathf.Clamp(thisT.position.z, minPosZ, maxPosZ);
 
-        thisT.position = new Vector3(x, thisT.position.y, z);
+        // thisT.position = new Vector3(x, thisT.position.y, z);
 
     }
 
@@ -224,16 +224,16 @@ public class CameraControl : MonoBehaviour
     {
         if (showGizmo)
         {
-            Vector3 p1 = new Vector3(minPosX, transform.position.y, maxPosZ);
-            Vector3 p2 = new Vector3(maxPosX, transform.position.y, maxPosZ);
-            Vector3 p3 = new Vector3(maxPosX, transform.position.y, minPosZ);
-            Vector3 p4 = new Vector3(minPosX, transform.position.y, minPosZ);
+            // Vector3 p1 = new Vector3(minPosX, transform.position.y, maxPosZ);
+            // Vector3 p2 = new Vector3(maxPosX, transform.position.y, maxPosZ);
+            // Vector3 p3 = new Vector3(maxPosX, transform.position.y, minPosZ);
+            // Vector3 p4 = new Vector3(minPosX, transform.position.y, minPosZ);
 
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(p1, p2);
-            Gizmos.DrawLine(p2, p3);
-            Gizmos.DrawLine(p3, p4);
-            Gizmos.DrawLine(p4, p1);
+            // Gizmos.color = Color.green;
+            // Gizmos.DrawLine(p1, p2);
+            // Gizmos.DrawLine(p2, p3);
+            // Gizmos.DrawLine(p3, p4);
+            // Gizmos.DrawLine(p4, p1);
         }
     }
 
