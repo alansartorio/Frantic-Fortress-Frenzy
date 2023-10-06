@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ff4bee1334e3fb0214602ff866c5c, type: 3}
   m_Name: Poison
   m_EditorClassIdentifier: 
-  cost: 10
+  cost: 200
   model: {fileID: 1135718275626568337, guid: ce844ad46e6f1bc2f870492f1e6ec248, type: 3}
   gameObject: {fileID: 4516263480922219449, guid: 06f0eff7748ec3589afb9ab77da0d669,
     type: 3}

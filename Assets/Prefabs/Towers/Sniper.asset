@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ff4bee1334e3fb0214602ff866c5c, type: 3}
   m_Name: Sniper
   m_EditorClassIdentifier: 
-  cost: 10
+  cost: 500
   model: {fileID: 6946168209708236699, guid: 4e9cb2810df20b56dbe915d9f9412cd0, type: 3}
   gameObject: {fileID: 4942180681539536556, guid: 5b868a4899ef54307a938026d2bde32b,
     type: 3}

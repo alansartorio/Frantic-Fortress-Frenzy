@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ff4bee1334e3fb0214602ff866c5c, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  cost: 10
+  cost: 200
   model: {fileID: 5331244471712257548, guid: 754fb048e01ee6f2196893fa6fa2b116, type: 3}
   gameObject: {fileID: 3053074603010334390, guid: 84d35d89961371e24869b026334c5a0e,
     type: 3}

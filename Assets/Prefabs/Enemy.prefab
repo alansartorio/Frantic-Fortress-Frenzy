@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5579d9002560e2831b96157934cd5db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: {fileID: 0}
+  _unitScore: 50
 --- !u!114 &3911398435306760605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +170,6 @@ MonoBehaviour:
   speed: 5
   waypoints: []
   currentWaypointIndex: 0
-  path: {fileID: 0}
 --- !u!114 &1957301086068823479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +195,7 @@ MonoBehaviour:
   onTargetChange:
     m_PersistentCalls:
       m_Calls: []
+  prolongedDamages: []
 --- !u!114 &2244631179002411921
 MonoBehaviour:
   m_ObjectHideFlags: 0
