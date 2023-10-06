@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using AlanSartorio.GridPathGenerator;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
+using UnityEngine;
+
+public class MapGenerator : MonoBehaviour
+{
+    [SerializeField] private float tileSize;
+    [SerializeField] private float tilesPerCell;
+    [SerializeField] private GameObject nodePrefab;
+    [SerializeField] private GameObject spawnerPrefab;
+    [SerializeField] private GameObject baseObject;
+    private MapGeneratorFacade _mapGenerator;
+    private Dictionary<Vector2Int, GameObject> _spawners = new();
+
+    private void Awake()
+    {
+        _mapGenerator = new MapGeneratorFacade();
+    }
+
+    private void Start()
+    {
+        var node = _mapGenerator.Initialize();
+        AddCell(node);
+    }
+
+    public void ExpandMap(Vector2Int position)
+    {
+        var node = _mapGenerator.ExpandMap(position);
+        AddCell(node);
+    }
+
+    void AddCell(MapDelta delta)
+    {
+        var node = delta.AddedNode;
+        var newNode = Instantiate(nodePrefab, transform);
+        newNode.transform.localPosition = NodePositionToWorldPosition(node.Position);
+
+        var toSkip = 0;
+        if (_spawners.TryGetValue(node.Position, out var spawner) && node.Children.Length > 0)
+        {
+            var child = node.Children[0];
+            var newPos = node.Position + child.Direction.GetDirection();
+            _spawners.Remove(node.Position);
+            SetSpawner(spawner, newPos, child.Path);
+            _spawners[newPos] = spawner;
+            toSkip++;
+        }
+
+        foreach (var child in node.Children.Skip(toSkip))
+        {
+            AddSpawner(node.Position + child.Direction.GetDirection(), child.Path);
+        }
+    }
+
+    void SetSpawner(GameObject spawner, Vector2Int pos, Path<Vector2Int> path)
+    {
+        spawner.transform.localPosition = NodePositionToWorldPosition(pos);
+        spawner.GetComponent<EnemySpawner>().path = new EnemyPath(
+            path.Nodes.Take(path.Nodes.Count - 1).Select(NodePositionToWorldPosition).ToArray(), baseObject);
+        spawner.GetComponentInChildren<ExpandOnClick>().position = pos;
+    }
+
+    void AddSpawner(Vector2Int pos, Path<Vector2Int> path)
+    {
+        var obj = Instantiate(spawnerPrefab);
+        SetSpawner(obj, pos, path);
+        _spawners[pos] = obj;
+    }
+
+    private Vector3 NodePositionToWorldPosition(Vector2Int pos)
+    {
+        return new Vector3(pos.x, 0, pos.y) * tileSize * tilesPerCell;
+    }
+}

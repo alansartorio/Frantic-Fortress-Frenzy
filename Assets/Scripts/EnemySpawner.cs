@@ -4,8 +4,7 @@ using UnityEngine.Events;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private static readonly float SpawnInterval = 1f;
-    public GameObject rawPath;
-    private EnemyPath _path;
+    public EnemyPath path;
     private Timer _spawnTimer;
     /**
      * TODO: maybe load several waves in advance to make it better performant
@@ -23,8 +22,7 @@ public class EnemySpawner : MonoBehaviour
         _spawnTimer.Stop();
         _spawnTimer.onTick.AddListener(SpawnNextEnemy);
         
-        _path = rawPath.GetComponent<EnemyPath>();
-        var director = GameObject.FindObjectOfType<GameDirector>();
+        var director = FindObjectOfType<GameDirector>();
         director.RegisterSpawn(new GameDirector.SpawnerInfo()
         {
             enemiesWiped = _allEnemiesDead,
@@ -62,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
         GameObject newEnemy = Instantiate(enemy, transform.position, transform.rotation);
         
         Enemy enemyScript = newEnemy.GetComponent<Enemy>();
-        enemyScript.path = _path;
+        enemyScript.path = path;
         _gameOver.AddListener(() => enemyScript.SetState(EnemyState.Idle));
         
         newEnemy.GetComponent<HealthManager>().onDeath.AddListener(_ => EnemyDied());

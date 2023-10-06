@@ -2,30 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPath : MonoBehaviour
+public class EnemyPath
 {
-    public Transform[] waypoints;
+    public Vector3[] waypoints;
     public static float waypointRadius = 2f;
     public GameObject target;
 
-    void Awake()
+    public EnemyPath(Vector3[] waypoints, GameObject target)
     {
-        waypoints = new Transform[transform.childCount];
-        for (int i = 0; i < waypoints.Length; i++)
-        {
-            waypoints[i] = transform.GetChild(i);
-        }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        this.waypoints = waypoints;
+        this.target = target;
     }
 }

@@ -88,6 +88,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2468280915263848578, guid: 1693d8dcd017b96adb348fedbffdfd28,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468280915263848578, guid: 1693d8dcd017b96adb348fedbffdfd28,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.737
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468280915263848578, guid: 1693d8dcd017b96adb348fedbffdfd28,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a861ac56f7bed6e0ae5e0ea7cd5dae2, type: 3}
     - target: {fileID: 2728245372064083150, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
       propertyPath: m_Name
@@ -101,17 +116,17 @@ PrefabInstance:
     - target: {fileID: 7127731577098608582, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7127731577098608582, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7127731577098608582, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.529943
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7127731577098608582, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
@@ -215,7 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236d422435854137b8bffea76a72d7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSound: {fileID: 8300000, guid: ad12747e1597b78be841e04728dcdee4, type: 3}
+  shotSound: {fileID: 0}
+  continuousSound: 1
   _barrel: {fileID: 3707038128678469283}
   _coneAperture: 0.3490658503988659
   _targetEnemy: {fileID: 0}

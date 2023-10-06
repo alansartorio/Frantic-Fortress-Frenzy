@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Defense : MonoBehaviour
@@ -7,6 +8,7 @@ public abstract class Defense : MonoBehaviour
     private TargetFinder _targetFinder;
     protected Attack attack;
     public AudioClip shotSound;
+    public bool continuousSound;
 
     void Start()
     {
@@ -19,10 +21,21 @@ public abstract class Defense : MonoBehaviour
 
         var audioSource = GetComponent<AudioSource>();
 
-        GetComponent<Attack>().onAttack.AddListener(() =>
+        if (continuousSound)
         {
-            audioSource.PlayOneShot(shotSound);
-        });
+            GetComponent<Attack>().onTargetChange.AddListener((targets) =>
+            {
+                if (targets.Any())
+                {
+                    if (!audioSource.isPlaying)
+                        audioSource.Play();
+                }
+                else
+                    audioSource.Pause();
+            });
+        }
+        else
+            GetComponent<Attack>().onAttack.AddListener(() => { audioSource.PlayOneShot(shotSound); });
     }
 
     public abstract void TargetEnter(ICollection<GameObject> enemies, GameObject addedEnemy);
