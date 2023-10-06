@@ -13,6 +13,8 @@ public class HealthManager : MonoBehaviour
     public UnityEvent<HealthManager> onHealthChange;
     private StackableProlongedDamage _stackableProlongedDamage = new();
     
+    [SerializeField]public float stackedFireDamage = 0;
+    
     public bool Dead
     {
         get => health == Health.Zero;
@@ -27,6 +29,7 @@ public class HealthManager : MonoBehaviour
     void Update()
     {
         _stackableProlongedDamage.Apply(this);
+        stackedFireDamage = _stackableProlongedDamage.getFireDamage();
     }
 
     public void ApplyDamage(Health damage)

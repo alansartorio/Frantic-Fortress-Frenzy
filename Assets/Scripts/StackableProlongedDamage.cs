@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,7 +12,7 @@ public class StackableProlongedDamage
     // The maximum amount of damage that can be applied per tick
     public static Dictionary<DamageType, float> damageCaps = new()
     {
-        { DamageType.Burning, 5f },
+        { DamageType.Burning, 0.5f },
     };
 
     public bool active = true;
@@ -26,21 +27,21 @@ public class StackableProlongedDamage
 
     public void Apply(HealthManager healthManager)
     {
-        if(!active) return;
+        // if(!active) return;
         bool isEmpty = true;
-        List<Action> updates = new();
-        foreach (var type in _damageTypes.Keys)
+        for (var i = 0; i < _damageTypes.Keys.Count; i++)
         {
+            var type = _damageTypes.Keys.ElementAt(i);
             var amount = _damageTypes[type];
             if (IsZero(amount)) continue;
             
             var amountToApply = Math.Min(amount, damageCaps[type]);
-            updates.Add(() => _damageTypes[type] = amount - amountToApply);
-    
+            _damageTypes[type] -= amountToApply;
             if(!IsZero(amount)) isEmpty = false;
-            healthManager.ApplyDamage(DamageUtils.AsHealth(amountToApply, type));
+            var dmg = DamageUtils.AsHealth(amountToApply, type);
+            Debug.Log("Applying " + dmg.Hp + " damage to " + healthManager.gameObject.name);
+            healthManager.ApplyDamage(dmg);
         }
-        updates.ForEach(action => action.Invoke());
         
         if (isEmpty)
         {
@@ -48,6 +49,11 @@ public class StackableProlongedDamage
         }
     }
 
+    public float getFireDamage()
+    {
+        _damageTypes.TryGetValue(DamageType.Burning, out var value);
+        return value;
+    }
 
     public void StackDamage(StackableProlongedDamage other)
     {

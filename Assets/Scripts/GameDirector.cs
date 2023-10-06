@@ -62,6 +62,10 @@ public class GameDirector : MonoBehaviour
         _newWave.AddListener(spawnerInfo.onNewWave);
         _gameOver.AddListener(spawnerInfo.onGameOver);
         spawnerInfo.enemiesWiped.AddListener(SubWaveCompleted);
+        if (_state == GameState.Wave)
+        {
+            _idleSpawns++; 
+        }
         _spawnCount++;
     }
 

@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
       propertyPath: damage._hp
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
       propertyPath: prolongedDamages.Array.data[0].amount
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
