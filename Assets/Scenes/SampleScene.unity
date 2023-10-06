@@ -628,7 +628,7 @@ MonoBehaviour:
   spawnerPrefab: {fileID: 3602382523818992633, guid: dc3f25a9c5372151b9052e68af307209,
     type: 3}
   baseObject: {fileID: 641595048}
-  pathObject: {fileID: 7461367082323268962, guid: a52a9a8d9f04edebe8f140b3d2d955a7,
+  pathObject: {fileID: 7516483944852294459, guid: fbc6469008c6368e7b8ccb66614ff528,
     type: 3}
 --- !u!1 &330585543
 GameObject:

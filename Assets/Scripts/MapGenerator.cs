@@ -9,7 +9,7 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] private float tileSize;
-    [SerializeField] private float tilesPerCell;
+    [SerializeField] private int tilesPerCell;
     [SerializeField] private GameObject nodePrefab;
     [SerializeField] private GameObject spawnerPrefab;
     [SerializeField] private GameObject baseObject;
@@ -42,11 +42,13 @@ public class MapGenerator : MonoBehaviour
 
         foreach (var child in node.Children)
         {
-            var path = Instantiate(pathObject);
-            path.transform.localPosition =
-                NodePositionToWorldPosition(delta.AddedNode.Position);
-            var rotation = (int)child.Direction * 90;
-            path.transform.localRotation = Quaternion.AngleAxis(rotation, Vector3.up);
+            for (int i = 0; i < tilesPerCell; i++)
+            {
+                var path = Instantiate(pathObject);
+                path.transform.localPosition = NodePositionToWorldPosition(delta.AddedNode.Position, child.Direction.GetDirection() * (i + 1));
+                // var rotation = (int)child.Direction * 90;
+                // path.transform.localRotation = Quaternion.AngleAxis(rotation, Vector3.up);
+            }
         }
 
         var toSkip = 0;
@@ -83,6 +85,12 @@ public class MapGenerator : MonoBehaviour
 
     private Vector3 NodePositionToWorldPosition(Vector2Int pos)
     {
-        return new Vector3(pos.x, 0, pos.y) * tileSize * tilesPerCell;
+        return NodePositionToWorldPosition(pos, Vector2Int.zero);
+    }
+
+    private Vector3 NodePositionToWorldPosition(Vector2Int pos, Vector2Int tile)
+    {
+        var xz = pos * tilesPerCell + tile;
+        return new Vector3(xz.x, 0, xz.y) * tileSize;
     }
 }
