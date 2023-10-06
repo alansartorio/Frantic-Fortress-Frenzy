@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyChase : MonoBehaviour
 {
     public float speed = 2;
-    public Transform[] waypoints;
+    public Vector3[] waypoints;
     public int currentWaypointIndex = 0;
     private Transform targetTransform;
     private Rigidbody targetRigidbody;
@@ -26,7 +26,7 @@ public class EnemyChase : MonoBehaviour
             MoveToPoint(targetTransform.position);
             return;
         }
-        if (MoveToPoint(waypoints[currentWaypointIndex].position))
+        if (MoveToPoint(waypoints[currentWaypointIndex]))
         {
             currentWaypointIndex += 1;
         }
