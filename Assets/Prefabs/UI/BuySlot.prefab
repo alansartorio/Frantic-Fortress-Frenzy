@@ -52,6 +52,7 @@ MonoBehaviour:
   defender: {fileID: 0}
   draggableDefender: {fileID: 6601157518442001349, guid: a27fbb397f0828cdbad7aeca35c2f10f,
     type: 3}
+  image: {fileID: 7570050717782575295}
 --- !u!1 &4236368136576439567
 GameObject:
   m_ObjectHideFlags: 0
