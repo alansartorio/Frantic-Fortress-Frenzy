@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,9 @@ public class Attack : MonoBehaviour
     private Timer _timer;
     public UnityEvent onAttack;
     public UnityEvent<ICollection<HealthManager>> onTargetChange;
-
+    [SerializeField] public SimpleDamage[] prolongedDamages;
+    private StackableProlongedDamage _stackableProlongedDamage;
+    
     public enum TargetAction
     {
         Add,
@@ -25,6 +28,12 @@ public class Attack : MonoBehaviour
 
     private void Awake()
     {
+        Dictionary<DamageType, float> damages = new();
+        foreach (var simpleDamage in prolongedDamages)
+        {
+            damages.TryAdd(simpleDamage.type, simpleDamage.amount);
+        }
+        _stackableProlongedDamage = new StackableProlongedDamage(damages);
         _timer = new Timer(attackCooldown, attackOnStart);
         _timer.onTick.AddListener(Execute);
     }
@@ -41,7 +50,7 @@ public class Attack : MonoBehaviour
         // That prints an error because you shouldn't modify the list while iterating.
         targetsHealth
             .ToList()
-            .ForEach(t => t.ApplyDamage(damage));
+            .ForEach(t => t.ApplyDamage(damage, _stackableProlongedDamage));
         onAttack.Invoke();
     }
 
@@ -84,4 +93,11 @@ public class Attack : MonoBehaviour
     {
         _timer?.onTick.RemoveListener(Execute);
     }
+}
+
+[Serializable]
+public struct SimpleDamage
+{
+    public DamageType type;
+    public float amount;
 }

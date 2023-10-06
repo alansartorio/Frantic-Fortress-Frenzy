@@ -151,12 +151,37 @@ PrefabInstance:
     - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
       propertyPath: damage._hp
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
         type: 3}
       propertyPath: attackCooldown
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
+        type: 3}
+      propertyPath: prolongedDamages.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
+        type: 3}
+      propertyPath: stackableProlongedDamage.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
+        type: 3}
+      propertyPath: prolongedDamages.Array.data[0].amount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
+        type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981011664257402905, guid: 1693d8dcd017b96adb348fedbffdfd28,
+        type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3526603729571924482, guid: 1693d8dcd017b96adb348fedbffdfd28, type: 3}

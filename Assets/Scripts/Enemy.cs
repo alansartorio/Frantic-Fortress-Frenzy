@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private EnemyChase chaseScript;
     private Attack attackScript;
     private EnemyIdle idleScript;
+    private StackableProlongedDamage _stackableProlongedDamage= new ();
 
     void Start()
     {

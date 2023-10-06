@@ -11,7 +11,8 @@ public class HealthManager : MonoBehaviour
     public UnityEvent<HealthManager> onTakeDamage;
     public UnityEvent<HealthManager> onDeath;
     public UnityEvent<HealthManager> onHealthChange;
-
+    private StackableProlongedDamage _stackableProlongedDamage = new();
+    
     public bool Dead
     {
         get => health == Health.Zero;
@@ -25,6 +26,7 @@ public class HealthManager : MonoBehaviour
 
     void Update()
     {
+        _stackableProlongedDamage.Apply(this);
     }
 
     public void ApplyDamage(Health damage)
@@ -40,6 +42,12 @@ public class HealthManager : MonoBehaviour
             onTakeDamage.Invoke(this);
         }
         onHealthChange.Invoke(this);
+    }
+
+    public void ApplyDamage(Health flatDamage, StackableProlongedDamage stackedDamage)
+    {
+        _stackableProlongedDamage.StackDamage(stackedDamage);
+        this.ApplyDamage(flatDamage);
     }
 }
 
