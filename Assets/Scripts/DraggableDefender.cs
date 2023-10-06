@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class DraggableDefender : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    public GameObject toInstantiate;
+    public DefenderData defender;
 
     Tile GetHoveringTile()
     {
@@ -32,6 +32,7 @@ public class DraggableDefender : MonoBehaviour, IDragHandler, IEndDragHandler
         var tile = GetHoveringTile();
         if (!tile) return;
         
-        tile.Occupant = Instantiate(toInstantiate);
+        FindObjectOfType<GameDirector>().Spend((int)defender.cost);
+        tile.Occupant = Instantiate(defender.gameObject);
     }
 }

@@ -22,12 +22,17 @@ public class BuySlot : MonoBehaviour, IDragHandler, IBeginDragHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        var draggingDefender = Instantiate(draggableDefender);
-        draggingDefender.name = "DraggingDefender";
-        draggingDefender.GetComponent<DraggableDefender>().toInstantiate = defender.gameObject;
+        var director = FindObjectOfType<GameDirector>();
+        if (director.HasEnoughScore((int)defender.cost))
+        {
+            var draggingDefender = Instantiate(draggableDefender);
+            draggingDefender.name = "DraggingDefender";
+            var draggableScript = draggingDefender.GetComponent<DraggableDefender>();
+            draggableScript.defender = defender;
 
-        var defenderGameObject = Instantiate(defender.model, draggingDefender.transform);
+            var defenderGameObject = Instantiate(defender.model, draggingDefender.transform);
 
-        eventData.pointerDrag = draggingDefender;
+            eventData.pointerDrag = draggingDefender;
+        }
     }
 }

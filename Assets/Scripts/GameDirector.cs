@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Exceptions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 [Serializable]
 public class GameDirector : MonoBehaviour
@@ -147,5 +144,15 @@ public class GameDirector : MonoBehaviour
         _gameOver.Invoke();
         // int survivedTime = DateTime.Now.Subtract(_startTime).Seconds;
         // totalScore += survivedTime * survivedTimeModifier;
+    }
+
+    public bool HasEnoughScore(int needed)
+    {
+        return partialScore >= needed;
+    }
+
+    public void Spend(int amount)
+    {
+        partialScore -= amount;
     }
 }
