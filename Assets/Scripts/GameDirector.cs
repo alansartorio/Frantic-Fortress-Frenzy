@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Exceptions;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -41,20 +42,25 @@ public class GameDirector : MonoBehaviour
     private int _idleSpawns = 0;
     private DateTime _startTime;
     [SerializeField] public int survivedTimeModifier = 10;
+    [SerializeField] private float timeScoreInterval;
+    [SerializeField] private int timeScoreMultiplier;
+    private float _timeScoreTimer;
+
+    [SerializeField] private TMP_Text scoreText;
 
     // Start is called before the first frame update
     void Start()
     {
         _state = GameState.Starting;
-        
+
         _waveTimer = new Timer("WaveTimer", WaveInterval, true);
         _waveTimer.Stop();
         _waveTimer.onTick.AddListener(StartWave);
-        
+
         _startTimer = new Timer("StartTimer", StartInterval, true);
         _startTimer.Restart();
         _startTimer.onTick.AddListener(StartGame);
-        
+
         _startTime = DateTime.Now;
     }
 
@@ -63,6 +69,16 @@ public class GameDirector : MonoBehaviour
     {
         _waveTimer.Update(Time.deltaTime);
         _startTimer?.Update(Time.deltaTime);
+        _timeScoreTimer += Time.deltaTime;
+        while (_timeScoreTimer > timeScoreInterval)
+        {
+            _timeScoreTimer -= timeScoreInterval;
+
+            partialScore += timeScoreMultiplier;
+            totalScore += timeScoreMultiplier;
+        }
+        
+        scoreText.SetText($"SCORE: {partialScore}");
     }
 
     public void RegisterSpawn(SpawnerInfo spawnerInfo)
@@ -73,8 +89,9 @@ public class GameDirector : MonoBehaviour
         spawnerInfo.enemyKilled.AddListener(HandleEnemyKilled);
         if (_state == GameState.Wave)
         {
-            _idleSpawns++; 
+            _idleSpawns++;
         }
+
         _spawnCount++;
     }
 
@@ -82,7 +99,7 @@ public class GameDirector : MonoBehaviour
     {
         baseHealth.onDeath.AddListener((_) => GameOver());
     }
-    
+
     public void HandleEnemyKilled(Enemy enemy)
     {
         partialScore += enemy.GetScore();
@@ -114,7 +131,7 @@ public class GameDirector : MonoBehaviour
         if (++_idleSpawns == _spawnCount)
         {
             StartRest();
-        }        
+        }
     }
 
     private void StartRest()
@@ -128,7 +145,7 @@ public class GameDirector : MonoBehaviour
     {
         _state = GameState.GameOver;
         _gameOver.Invoke();
-        int survivedTime = DateTime.Now.Subtract(_startTime).Seconds;
-        totalScore += survivedTime * survivedTimeModifier;
+        // int survivedTime = DateTime.Now.Subtract(_startTime).Seconds;
+        // totalScore += survivedTime * survivedTimeModifier;
     }
 }
