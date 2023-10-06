@@ -1,13 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BuySlot : MonoBehaviour, IDragHandler, IBeginDragHandler
 {
     public DefenderData defender;
     public GameObject draggableDefender;
-    
+    [SerializeField] private Image image;
+
+    private void Start()
+    {
+        image.sprite = defender.icon;
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
     }

@@ -13,6 +13,7 @@ public class BuyPanel : MonoBehaviour
         foreach (var defender in defenders)
         {
             var slot = Instantiate(buySlot, transform).GetComponent<BuySlot>();
+            
             slot.defender = defender;
         }
     }

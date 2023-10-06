@@ -8,10 +8,10 @@ using UnityEngine.Events;
 
 public enum NodeDirection
 {
-    Left,
     Up,
     Right,
-    Down
+    Down,
+    Left,
 }
 
 static class NodeDirectionExtensions

@@ -39,7 +39,6 @@ public class StackableProlongedDamage
             _damageTypes[type] -= amountToApply;
             if(!IsZero(amount)) isEmpty = false;
             var dmg = DamageUtils.AsHealth(amountToApply, type);
-            Debug.Log("Applying " + dmg.Hp + " damage to " + healthManager.gameObject.name);
             healthManager.ApplyDamage(dmg);
         }
         
@@ -47,12 +46,6 @@ public class StackableProlongedDamage
         {
             active = false;
         }
-    }
-
-    public float getFireDamage()
-    {
-        _damageTypes.TryGetValue(DamageType.Burning, out var value);
-        return value;
     }
 
     public void StackDamage(StackableProlongedDamage other)

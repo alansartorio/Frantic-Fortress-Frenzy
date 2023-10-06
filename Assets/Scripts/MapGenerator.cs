@@ -13,6 +13,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private GameObject nodePrefab;
     [SerializeField] private GameObject spawnerPrefab;
     [SerializeField] private GameObject baseObject;
+    [SerializeField] private GameObject pathObject;
     private MapGeneratorFacade _mapGenerator;
     private Dictionary<Vector2Int, GameObject> _spawners = new();
 
@@ -38,6 +39,15 @@ public class MapGenerator : MonoBehaviour
         var node = delta.AddedNode;
         var newNode = Instantiate(nodePrefab, transform);
         newNode.transform.localPosition = NodePositionToWorldPosition(node.Position);
+
+        foreach (var child in node.Children)
+        {
+            var path = Instantiate(pathObject);
+            path.transform.localPosition =
+                NodePositionToWorldPosition(delta.AddedNode.Position);
+            var rotation = (int)child.Direction * 90;
+            path.transform.localRotation = Quaternion.AngleAxis(rotation, Vector3.up);
+        }
 
         var toSkip = 0;
         if (_spawners.TryGetValue(node.Position, out var spawner) && node.Children.Length > 0)
