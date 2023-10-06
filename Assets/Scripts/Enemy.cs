@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private Attack attackScript;
     private EnemyIdle idleScript;
     private StackableProlongedDamage _stackableProlongedDamage= new ();
+    [SerializeField] private int _unitScore = 10;
 
     void Start()
     {
@@ -30,6 +31,11 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         });
         SetState(EnemyState.Walking);
+    }
+    
+    public int GetScore()
+    {
+        return _unitScore;
     }
 
     void OnTriggerEnter(Collider collider)

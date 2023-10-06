@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     private int _enemiesKilled = 0;
     private readonly UnityEvent _allEnemiesDead = new();
     private readonly UnityEvent _gameOver = new();
+    private readonly UnityEvent<Enemy> _enemyKilled = new();
 
 
     void Start()
@@ -26,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
         director.RegisterSpawn(new GameDirector.SpawnerInfo()
         {
             enemiesWiped = _allEnemiesDead,
+            enemyKilled = _enemyKilled,
             onGameOver = () => _gameOver.Invoke(),
             onNewWave = SpawnWave
         });
@@ -63,17 +65,18 @@ public class EnemySpawner : MonoBehaviour
         enemyScript.path = path;
         _gameOver.AddListener(() => enemyScript.SetState(EnemyState.Idle));
         
-        newEnemy.GetComponent<HealthManager>().onDeath.AddListener(_ => EnemyDied());
+        newEnemy.GetComponent<HealthManager>().onDeath.AddListener(_ => EnemyDied(enemyScript));
 
         _enemiesSpawned++;
     }
 
-    private void EnemyDied()
+    private void EnemyDied(Enemy enemy)
     {
         if (++_enemiesKilled == _currentWave.EnemyCount)
         {
             _allEnemiesDead.Invoke();
         }
+        _enemyKilled.Invoke(enemy);
     }
 
     void OnDestroy()

@@ -103,6 +103,7 @@ public struct Health
     public static Health operator -(Health first, Health second)
     {
         var res = first;
+        // TODO: should it reduce each type of health one by one, applying the (not yet implemented modifiers) or should it reduce all the health types at once, with stacking modifiers?
         res.Hp -= second.Hp;
         res.Armor -= second.Armor;
         res.Shield -= second.Shield;
