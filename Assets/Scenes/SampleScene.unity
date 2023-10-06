@@ -1113,6 +1113,7 @@ MonoBehaviour:
   initialOrthograficZoom: 13
   avoidClipping: 0
   showGizmo: 1
+  currentZoom: 0
 --- !u!4 &688907914
 Transform:
   m_ObjectHideFlags: 0
@@ -1740,6 +1741,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cfae621c0a4be9a1286de76cead297fc, type: 2}
   - {fileID: 11400000, guid: 448bccbc070d2acbe97813ffbd6d309e, type: 2}
   - {fileID: 11400000, guid: 63fc695581773629abeddf76fb705df8, type: 2}
+  - {fileID: 11400000, guid: 7be38bf9c13c97d9c967841c49fce949, type: 2}
   buySlot: {fileID: 3888008741419868787, guid: 34cd595289411ae2b95e17e82860f3a1, type: 3}
 --- !u!114 &1130842651
 MonoBehaviour:
@@ -2166,6 +2168,7 @@ MonoBehaviour:
   initialOrthograficZoom: 13
   avoidClipping: 0
   showGizmo: 1
+  currentZoom: 0
 --- !u!1001 &1057299935490342736
 PrefabInstance:
   m_ObjectHideFlags: 0

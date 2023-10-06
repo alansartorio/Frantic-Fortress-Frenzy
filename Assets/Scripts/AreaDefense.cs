@@ -13,11 +13,6 @@ public class AreaDefense : Defense
     [SerializeField] private GameObject _targetEnemy = null;
     [SerializeField] private ParticleSystem _shootingSystem;
 
-    private void Awake()
-    {
-        StopShooting();
-    }
-
     public override void TargetEnter(ICollection<GameObject> enemies, GameObject addedEnemy)
     {
     }
@@ -83,6 +78,7 @@ public class AreaDefense : Defense
     private void StopShooting()
     {
         _shootingSystem.Stop();
+        attack.UpdateTarget(Enumerable.Empty<HealthManager>(), Attack.TargetAction.ClearAndAdd);
     }
     
     private float AngleToEnemy(GameObject enemy)

@@ -42,7 +42,8 @@ public class Attack : MonoBehaviour
         targetsHealth
             .ToList()
             .ForEach(t => t.ApplyDamage(damage));
-        onAttack.Invoke();
+        if (targetsHealth.Any())
+            onAttack.Invoke();
     }
 
     public void UpdateTarget(IEnumerable<HealthManager> targets, TargetAction command)
@@ -57,7 +58,7 @@ public class Attack : MonoBehaviour
                 break;
             case TargetAction.ClearAndAdd:
                 targetsHealth.Clear();
-                targetsHealth.AddLast(targets.First());
+                targetsHealth.AddRange(targets);
                 break;
         }
 
