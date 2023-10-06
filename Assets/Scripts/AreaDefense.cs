@@ -4,12 +4,20 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.Pool;
 
 public class AreaDefense : Defense
 {
     [SerializeField] private GameObject _barrel;
     [SerializeField] private double _coneAperture = Math.PI / 9; // 20 deg
     [SerializeField] private GameObject _targetEnemy = null;
+    [SerializeField] private ParticleSystem _shootingSystem;
+
+    private void Awake()
+    {
+        StopShooting();
+    }
+
     public override void TargetEnter(ICollection<GameObject> enemies, GameObject addedEnemy)
     {
     }
@@ -20,7 +28,11 @@ public class AreaDefense : Defense
     
     public override void GameUpdate(ICollection<GameObject> enemies)
     {
-        if(enemies.Count == 0) return;
+        if (enemies.Count == 0)
+        {
+            StopShooting();
+            return;
+        }
         // Compute center of mass with formula, assuming that every enemy has the same mass of 1
         var target = enemies.Aggregate(
             Vector3.zero,
@@ -47,10 +59,32 @@ public class AreaDefense : Defense
                 targets.AddLast(enemy.GetComponent<HealthManager>());
             }
         });
+
+        if (targets.Count == 0)
+        {
+            StopShooting();
+            print("Stop shooting");
+        }
+        else
+        {
+            Shoot();
+        }
+        
         
         attack.UpdateTarget(targets, Attack.TargetAction.ClearAndAdd);
     }
 
+    private void Shoot()
+    {
+        _shootingSystem.Play();
+        _shootingSystem.transform.LookAt(_targetEnemy.transform);
+    }
+
+    private void StopShooting()
+    {
+        _shootingSystem.Stop();
+    }
+    
     private float AngleToEnemy(GameObject enemy)
     {
         if (_targetEnemy == null)
