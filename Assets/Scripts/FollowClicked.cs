@@ -28,8 +28,12 @@ public class FollowClicked : MonoBehaviour
                {
                    CinemachineVirtualCamera vcam = GetComponent<CinemachineVirtualCamera>();
                    vcam.Follow = targetToFollow.transform;
-                   vcam.LookAt = targetToFollow.transform;
                    
+               }
+               else
+               {
+                   CinemachineVirtualCamera vcam = GetComponent<CinemachineVirtualCamera>();
+                   vcam.Follow = null;
                }
            }
        }
