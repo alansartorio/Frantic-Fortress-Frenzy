@@ -46,7 +46,7 @@ public class CameraControl : MonoBehaviour
     //calculated deltaTime based on timeScale so camera movement speed always remain constant
     private float deltaT;
 
-    private float currentZoom = 0;
+    [SerializeField] private float currentZoom = 0;
 
     private Transform thisT;
     public static CameraControl instance;
@@ -69,13 +69,14 @@ public class CameraControl : MonoBehaviour
 
         minRotateAngle = Mathf.Max(10, minRotateAngle);
         maxRotateAngle = Mathf.Min(89, maxRotateAngle);
-
+        
         minZoomDistance = Mathf.Max(1, minZoomDistance);
 
         currentZoom = cameraComponent.transform.localPosition.z;
         if (cameraComponent.orthographic)
         {
             cameraComponent.orthographicSize = initialOrthograficZoom;
+            currentZoom = -initialOrthograficZoom;
         }
     }
 

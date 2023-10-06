@@ -8,7 +8,7 @@ public class TransitionManager : MonoBehaviour
     {
         GameObject youLostMenu = GameObject.Find("YouLostMenu");
         
-        CanvasGroup canvasGroup = youLostMenu.GetComponent<CanvasGroup>();
+        CanvasGroup canvasGroup = youLostMenu.GetComponentInChildren<CanvasGroup>();
         
         canvasGroup.alpha = 0.4f;
         canvasGroup.blocksRaycasts = true;
