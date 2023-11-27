@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEngine.Pool;
+using UnityEngine;
 
 public class AreaDefense : Defense
 {

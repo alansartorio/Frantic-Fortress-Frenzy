@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,13 +11,9 @@ public class TargetFinder : MonoBehaviour
     public UnityEvent<ICollection<GameObject>, GameObject> onTargetExit;
     public UnityEvent<ICollection<GameObject>> onGameUpdate;
 
-    void Start()
-    {
-    }
-
     private bool IsEnemy(GameObject gameObject)
     {
-        return gameObject.tag == targetTag;
+        return gameObject.CompareTag(targetTag);
     }
 
     void OnTriggerEnter(Collider other)

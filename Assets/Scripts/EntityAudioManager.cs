@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityAudioManager : MonoBehaviour
@@ -15,11 +13,6 @@ public class EntityAudioManager : MonoBehaviour
         healthManager = GetComponent<HealthManager>();
         healthManager.onDeath.AddListener(PlayOnDeathSound);
         healthManager.onTakeDamage.AddListener(PlayOnTakeDamageSound);
-    }
-
-    void Update()
-    {
-
     }
 
     void PlayOnDeathSound(HealthManager _)
