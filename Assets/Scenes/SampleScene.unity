@@ -1413,7 +1413,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _state: 0
   _enemies:
-  - {fileID: 3509487019743703083, guid: 08fe77601e3bd409bab6f24aab7cf33b, type: 3}
+  - {fileID: 8429554457385591853, guid: 620439b7afa40636395e6ced3f86e02f, type: 3}
+  - {fileID: 8429554457385591853, guid: 45397a6d7b3b9fb3484796c0fff010e5, type: 3}
+  - {fileID: 8429554457385591853, guid: d8da44cb8497db8d19226b4a1a60d833, type: 3}
   partialScore: 100
   totalScore: 0
   survivedTimeModifier: 10
