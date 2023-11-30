@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bounce : MonoBehaviour
 {
     private float t = 0;
+    [SerializeField]
     private float period = 1f;
     
     void Update()

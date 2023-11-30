@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Troll
       objectReference: {fileID: 0}
+    - target: {fileID: 3911398435306760605, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5430435993354256091, guid: 08fe77601e3bd409bab6f24aab7cf33b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -179,3 +184,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2851a3151a12f3f8013bf3efa14165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  period: 2
