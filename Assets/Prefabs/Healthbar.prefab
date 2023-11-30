@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1644080630155179333}
   - component: {fileID: 4377798089230028640}
   - component: {fileID: 8585511445135481687}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Hp Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 9054944190408996578}
   - component: {fileID: 5908120184631964894}
   - component: {fileID: 7938534756148517837}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Shield Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1257140996632267921}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 3842844829990565055}
   - component: {fileID: 7333505364604270329}
   - component: {fileID: 6256992538868524729}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 602529074732071908}
   - component: {fileID: 1156348582874004474}
   - component: {fileID: 4243244828331488467}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Armor Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 2059228867057522299}
   - component: {fileID: 3506009628228681642}
   - component: {fileID: 7491461489051944003}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
