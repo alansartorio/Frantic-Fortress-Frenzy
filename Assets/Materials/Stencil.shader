@@ -17,13 +17,13 @@ Shader "Custom/Stencil"
         {
             Blend Zero One
             ZWrite Off
+            Ztest Always
             
             Stencil
             {
                 Ref [_StencilID]
                 Comp Always
                 Pass Replace
-                Fail Keep
             }
         }
     }
