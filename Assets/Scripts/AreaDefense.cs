@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEngine.Pool;
+using UnityEngine;
 
 public class AreaDefense : Defense
 {
@@ -58,7 +55,6 @@ public class AreaDefense : Defense
         if (targets.Count == 0)
         {
             StopShooting();
-            print("Stop shooting");
         }
         else
         {
@@ -71,13 +67,15 @@ public class AreaDefense : Defense
 
     private void Shoot()
     {
-        _shootingSystem.Play();
+        if (!_shootingSystem.isPlaying)
+            _shootingSystem.Play();
         _shootingSystem.transform.LookAt(_targetEnemy.transform);
     }
 
     private void StopShooting()
     {
-        _shootingSystem.Stop();
+        if (_shootingSystem.isPlaying)
+            _shootingSystem.Stop();
         attack.UpdateTarget(Enumerable.Empty<HealthManager>(), Attack.TargetAction.ClearAndAdd);
     }
     

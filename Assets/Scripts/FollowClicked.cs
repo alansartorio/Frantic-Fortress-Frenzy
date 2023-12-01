@@ -1,7 +1,6 @@
 using Cinemachine;
 using UnityEngine;
 
-
 public class FollowClicked : MonoBehaviour
 {
    private Camera mainCamera;

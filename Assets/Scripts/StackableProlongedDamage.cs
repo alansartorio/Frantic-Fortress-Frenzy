@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-[System.Serializable]
+[Serializable]
 public class StackableProlongedDamage
 {
     // The maximum amount of damage that can be applied per tick

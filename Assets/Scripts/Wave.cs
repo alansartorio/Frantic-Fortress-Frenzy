@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Wave
 {
