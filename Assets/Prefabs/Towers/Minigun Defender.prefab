@@ -26,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6024830525650302522}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 7.498799e-33, z: -0, w: -1}
   m_LocalPosition: {x: 0, y: 1.7, z: 0.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 826326038247498070}
+  m_Father: {fileID: 8509997278831975926}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &424455830431346676
 ParticleSystem:
@@ -4886,7 +4886,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1001 &2897682296525060103
+--- !u!1001 &1846884908917017219
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -4894,57 +4894,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3926337871420191970}
     m_Modifications:
-    - target: {fileID: 6946168209708236699, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 2111208190921554316, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_Name
-      value: Basic Tower
+      value: Minigun Tower Model
       objectReference: {fileID: 0}
-    - target: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - target: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
@@ -4952,23 +4952,23 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2540330998310476113, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+    - targetCorrespondingSourceObject: {fileID: 8050432161948718965, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 439230228052868708}
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4e9cb2810df20b56dbe915d9f9412cd0, type: 3}
---- !u!4 &826326038247498070 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 70eada384b6631fe39f9b41c8a4ddc2b, type: 3}
+--- !u!4 &8509997278831975926 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2540330998310476113, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+  m_CorrespondingSourceObject: {fileID: 8050432161948718965, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
     type: 3}
-  m_PrefabInstance: {fileID: 2897682296525060103}
+  m_PrefabInstance: {fileID: 1846884908917017219}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4834839812989328678 stripped
+--- !u!4 &8932368721998504979 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7723233022294975777, guid: 4e9cb2810df20b56dbe915d9f9412cd0,
+  m_CorrespondingSourceObject: {fileID: 7086222754420141712, guid: 70eada384b6631fe39f9b41c8a4ddc2b,
     type: 3}
-  m_PrefabInstance: {fileID: 2897682296525060103}
+  m_PrefabInstance: {fileID: 1846884908917017219}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4025569480991945394
 PrefabInstance:
@@ -5081,7 +5081,7 @@ PrefabInstance:
     - target: {fileID: 5086520888769377624, guid: 6b0da15827482ca15b7072e284d204ed,
         type: 3}
       propertyPath: m_Name
-      value: Single Defender
+      value: Minigun Defender
       objectReference: {fileID: 0}
     - target: {fileID: 8580395294823413375, guid: 6b0da15827482ca15b7072e284d204ed,
         type: 3}
@@ -5586,7 +5586,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 117257832461780560, guid: 6b0da15827482ca15b7072e284d204ed,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4834839812989328678}
+      addedObject: {fileID: 8932368721998504979}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5086520888769377624, guid: 6b0da15827482ca15b7072e284d204ed,
         type: 3}
