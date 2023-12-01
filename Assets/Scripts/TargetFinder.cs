@@ -9,7 +9,7 @@ public class TargetFinder : MonoBehaviour
     public string targetTag;
     public UnityEvent<ICollection<GameObject>, GameObject> onTargetEnter;
     public UnityEvent<ICollection<GameObject>, GameObject> onTargetExit;
-    public UnityEvent<ICollection<GameObject>> onGameUpdate;
+    public UnityEvent<ICollection<GameObject>, float> onGameUpdate;
 
     private bool IsEnemy(GameObject gameObject)
     {
@@ -49,6 +49,6 @@ public class TargetFinder : MonoBehaviour
 
     void Update()
     {
-        onGameUpdate.Invoke(targets.AsReadOnlyCollection());
+        onGameUpdate.Invoke(targets.AsReadOnlyCollection(), Time.deltaTime);
     }
 }

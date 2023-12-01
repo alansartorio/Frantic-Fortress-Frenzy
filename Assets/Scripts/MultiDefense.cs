@@ -13,7 +13,7 @@ public class MultiDefense : Defense
         attack.UpdateTarget(UtilityEnumerable.Once(removedEnemy.GetComponent<HealthManager>()), Attack.TargetAction.Remove);
     }
     
-    public override void GameUpdate(ICollection<GameObject> enemies)
+    public override void GameUpdate(ICollection<GameObject> enemies, float deltaTime)
     {
     }
 }

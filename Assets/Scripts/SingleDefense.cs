@@ -27,7 +27,7 @@ public class SingleDefense : Defense
                 Attack.TargetAction.Add);
     }
     
-    public override void GameUpdate(ICollection<GameObject> enemies)
+    public override void GameUpdate(ICollection<GameObject> enemies, float deltaTime)
     {
     }
 }

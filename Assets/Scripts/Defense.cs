@@ -41,7 +41,7 @@ public abstract class Defense : MonoBehaviour
 
     public abstract void TargetExit(ICollection<GameObject> enemies, GameObject removedEnemy);
 
-    public abstract void GameUpdate(ICollection<GameObject> enemies);
+    public abstract void GameUpdate(ICollection<GameObject> enemies, float deltaTime);
 
     void OnDestroy()
     {

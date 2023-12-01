@@ -4,7 +4,7 @@ public class Enemy : MonoBehaviour
 {
     private EnemyState state;
     public EnemyPath path;
-    private EnemyChase chaseScript;
+    public EnemyChase chaseScript;
     private Attack attackScript;
     private EnemyIdle idleScript;
     private StackableProlongedDamage _stackableProlongedDamage= new ();
