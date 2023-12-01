@@ -102,6 +102,21 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.minColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7007636514746595937, guid: 84d35d89961371e24869b026334c5a0e,
+        type: 3}
+      propertyPath: damage._hp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007636514746595937, guid: 84d35d89961371e24869b026334c5a0e,
+        type: 3}
+      propertyPath: damage._armor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007636514746595937, guid: 84d35d89961371e24869b026334c5a0e,
+        type: 3}
+      propertyPath: damage._shield
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7883785893839187390, guid: 84d35d89961371e24869b026334c5a0e,
         type: 3}
       propertyPath: m_LocalPosition.x
