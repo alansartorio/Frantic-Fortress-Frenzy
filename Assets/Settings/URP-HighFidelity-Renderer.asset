@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: VisibleInRange Transparent
-    Event: 300
+    Event: 500
     filterSettings:
       RenderQueueType: 1
       LayerMask:
