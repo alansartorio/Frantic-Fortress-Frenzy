@@ -29,7 +29,6 @@ public class MenuButons : MonoBehaviour
 
     public void Play()
     {
-        _menuButtons.SetActive(false);
         _loadingSection.SetActive(true);
         _loadAnimationTimer.Restart();
         StartCoroutine(LoadYourAsyncScene());
