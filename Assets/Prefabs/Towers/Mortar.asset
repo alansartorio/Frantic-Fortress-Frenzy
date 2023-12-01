@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ff4bee1334e3fb0214602ff866c5c, type: 3}
   m_Name: Mortar
   m_EditorClassIdentifier: 
-  cost: 50
-  model: {fileID: 6946168209708236699, guid: 4e9cb2810df20b56dbe915d9f9412cd0, type: 3}
+  cost: 100
+  model: {fileID: 919132149155446097, guid: 940c8e5ff486ba63ea0710a77f85d0fa, type: 3}
   gameObject: {fileID: 8163691116124588010, guid: f1a2972ddd4e7c073bfb4f9a2e5ce6cb,
     type: 3}
-  icon: {fileID: 21300000, guid: 440a8f2d180f4873ebd6c937ac1b828a, type: 3}
+  icon: {fileID: 21300000, guid: 4dafb9cf92d8155fb9c3475426fdef3c, type: 3}

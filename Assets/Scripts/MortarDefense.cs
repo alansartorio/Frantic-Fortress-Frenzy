@@ -13,6 +13,7 @@ public class MortarDefense : Defense
     public Transform firePoint;
     public float timeToTarget = 3f;
     public Health damageAmount = new Health(10f,0,0);
+    [SerializeField] public ParticleSystem firingEffect;
 
     private bool initialized = false;
     private Vector3 _turretPosition;
@@ -141,7 +142,8 @@ public class MortarDefense : Defense
         
         _isAttacking = true;
         _attackTimer.Restart();
-        
+        if (firingEffect != null)
+            firingEffect.Play();
     }
     
     private void OnProjectileHitGround(LinkedList<GameObject> targets)
