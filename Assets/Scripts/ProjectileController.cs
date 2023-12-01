@@ -30,18 +30,16 @@ public class ProjectileController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other)
     {
-        if(executed) return;
         var go = other.gameObject;
-        if (go.name == "Floor")
+        if (go.CompareTag("Ground"))
         {
             onProjectileHitGround.Invoke(_targets);
-            ExplodeAnimation();
-
-            GameObject o;
-            (o = gameObject).GetComponent<Rigidbody>().velocity = Vector3.zero;
-            Destroy(o, 0.5f);
-            executed = true;
         }
+        ExplodeAnimation();
+        GameObject o;
+        (o = gameObject).GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Destroy(o, 0.5f);
+        executed = true;
     }
     
     private void OnTriggerEnter(Collider other)
