@@ -2483,7 +2483,7 @@ MonoBehaviour:
   enableMousePanning: 0
   enableKeyPanning: 1
   mousePanningZoneWidth: 10
-  keyRotateSpeed: 10
+  keyRotateSpeed: 100
   minZoomDistance: 4
   maxZoomDistance: 50
   minRotateAngle: 10
