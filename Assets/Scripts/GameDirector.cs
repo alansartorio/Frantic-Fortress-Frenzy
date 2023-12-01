@@ -43,6 +43,8 @@ public class GameDirector : MonoBehaviour
     [SerializeField] private int timeScoreMultiplier;
     private float _timeScoreTimer;
 
+    public UnityEvent<int> OnPartialScoreChange;
+
     [SerializeField] private TMP_Text scoreText;
 
     // Start is called before the first frame update
@@ -71,8 +73,7 @@ public class GameDirector : MonoBehaviour
         {
             _timeScoreTimer -= timeScoreInterval;
 
-            partialScore += timeScoreMultiplier;
-            totalScore += timeScoreMultiplier;
+            AddScore(timeScoreMultiplier);
         }
         
         scoreText.SetText($"SCORE: {partialScore}");
@@ -99,8 +100,7 @@ public class GameDirector : MonoBehaviour
 
     public void HandleEnemyKilled(Enemy enemy)
     {
-        partialScore += enemy.GetScore();
-        totalScore += enemy.GetScore();
+        AddScore(enemy.GetScore());
     }
 
     private void StartWave()
@@ -154,5 +154,13 @@ public class GameDirector : MonoBehaviour
     public void Spend(int amount)
     {
         partialScore -= amount;
+        OnPartialScoreChange.Invoke(partialScore);
+    }
+
+    private void AddScore(int score)
+    {
+        partialScore += score;
+        totalScore += score;
+        OnPartialScoreChange.Invoke(partialScore);
     }
 }
