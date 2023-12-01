@@ -13,6 +13,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1156793161105360925, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: maxHealth._hp
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156793161105360925, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: maxHealth._armor
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156793161105360925, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: maxHealth._shield
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3509487019743703083, guid: 08fe77601e3bd409bab6f24aab7cf33b,
         type: 3}
       propertyPath: m_Name
