@@ -1211,7 +1211,7 @@ MonoBehaviour:
   maxZoomDistance: 30
   minRotateAngle: 10
   maxRotateAngle: 89
-  initialOrthograficZoom: 13
+  initialOrthograficZoom: 0
   avoidClipping: 0
   showGizmo: 1
   currentZoom: 0
