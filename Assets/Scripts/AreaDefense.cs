@@ -18,7 +18,7 @@ public class AreaDefense : Defense
     {
     }
     
-    public override void GameUpdate(ICollection<GameObject> enemies)
+    public override void GameUpdate(ICollection<GameObject> enemies, float deltaTime)
     {
         if (enemies.Count == 0)
         {
