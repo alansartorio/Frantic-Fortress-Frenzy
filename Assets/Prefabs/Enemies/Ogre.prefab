@@ -13,6 +13,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.363
       objectReference: {fileID: 0}
+    - target: {fileID: 1156793161105360925, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: maxHealth._armor
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156793161105360925, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: maxHealth._shield
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957301086068823479, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: damage._hp
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3509487019743703083, guid: 08fe77601e3bd409bab6f24aab7cf33b,
         type: 3}
       propertyPath: m_Name

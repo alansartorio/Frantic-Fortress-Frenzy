@@ -5037,7 +5037,7 @@ PrefabInstance:
     - target: {fileID: 975135597016879503, guid: 6b0da15827482ca15b7072e284d204ed,
         type: 3}
       propertyPath: damage._armor
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 975135597016879503, guid: 6b0da15827482ca15b7072e284d204ed,
         type: 3}
@@ -5047,7 +5047,7 @@ PrefabInstance:
     - target: {fileID: 975135597016879503, guid: 6b0da15827482ca15b7072e284d204ed,
         type: 3}
       propertyPath: damage._shield
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 975135597016879503, guid: 6b0da15827482ca15b7072e284d204ed,
         type: 3}

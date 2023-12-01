@@ -160,6 +160,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1156793161105360925, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: maxHealth._hp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957301086068823479, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: damage._hp
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3509487019743703083, guid: 08fe77601e3bd409bab6f24aab7cf33b,
         type: 3}
       propertyPath: m_Name
