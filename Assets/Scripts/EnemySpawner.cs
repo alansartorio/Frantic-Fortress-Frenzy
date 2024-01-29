@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
      * TODO: maybe load several waves in advance to make it better performant
      */
     [SerializeField] private Wave _currentWave;
-    private int _enemiesSpawned = 0;
+    private List<GameObject> _enemiesLeft = new();
     private int _enemiesKilled = 0;
     private readonly UnityEvent _allEnemiesDead = new();
     private readonly UnityEvent _gameOver = new();
