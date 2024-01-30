@@ -12,6 +12,14 @@ public struct EnemyProportions
         Second = second;
         Third = third;
     }
+
+    public float[] ToArray()
+    {
+        return new[]
+        {
+            First, Second, Third
+        };
+    }
 }
 
 public class Stages
