@@ -1,17 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Wave
 {
-    private readonly int _enemyCount;
-    private readonly GameObject[] _enemyTypes;
+    private readonly List<GameObject> _enemies;
 
-    public Wave(int enemyCount, GameObject[] enemyTypes)
+    public Wave(List<GameObject> enemies)
     {
-        _enemyCount = enemyCount;
-        _enemyTypes = new GameObject[enemyTypes.Length];
-        enemyTypes.CopyTo(_enemyTypes, 0);
+        _enemies = enemies;
     }
 
-    public GameObject[] EnemyTypes => _enemyTypes;
-    public int EnemyCount => _enemyCount;
+    public List<GameObject> Enemies => _enemies;
 }

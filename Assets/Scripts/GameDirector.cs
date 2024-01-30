@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Exceptions;
 using TMPro;
 using UnityEngine;
@@ -37,11 +38,14 @@ public class GameDirector : MonoBehaviour
     private Timer _startTimer;
     private int _spawnCount = 0;
     private int _idleSpawns = 0;
+    private int _waveCounter = -1;
+    private int _enemiesPerWave = 10;
     private DateTime _startTime;
     [SerializeField] public int survivedTimeModifier = 10;
     [SerializeField] private float timeScoreInterval;
     [SerializeField] private int timeScoreMultiplier;
     private float _timeScoreTimer;
+    private Stages _stages = new();
 
     public UnityEvent<int> OnPartialScoreChange;
 
@@ -75,7 +79,7 @@ public class GameDirector : MonoBehaviour
 
             AddScore(timeScoreMultiplier);
         }
-        
+
         scoreText.SetText($"SCORE: {partialScore}");
     }
 
@@ -105,9 +109,14 @@ public class GameDirector : MonoBehaviour
 
     private void StartWave()
     {
+        _waveCounter++;
         _state = GameState.Wave;
         _idleSpawns = 0;
-        var wave = new Wave(10, _enemies);
+        var enemiesToSpawn = _enemies.Zip(_stages.GetProportions((float)_waveCounter / 5).ToArray(),
+                (e, c) => (Enemy: e, Count: (int)Math.Round(c * _enemiesPerWave)))
+            .SelectMany((t) => Enumerable.Repeat(t.Enemy, t.Count))
+            .ToList();
+        var wave = new Wave(enemiesToSpawn);
         _newWave.Invoke(wave);
         _waveTimer.Pause();
     }
