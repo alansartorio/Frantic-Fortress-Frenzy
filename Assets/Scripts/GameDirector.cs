@@ -61,7 +61,7 @@ public class GameDirector : MonoBehaviour
         _waveTimer.Stop();
         _waveTimer.onTick.AddListener(StartWave);
 
-        _startTimer = new Timer("StartTimer", StartInterval, true);
+        _startTimer = new Timer("StartTimer", StartInterval, false);
         _startTimer.Restart();
         _startTimer.onTick.AddListener(StartGame);
 
