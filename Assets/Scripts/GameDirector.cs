@@ -50,6 +50,7 @@ public class GameDirector : MonoBehaviour
     public UnityEvent<int> OnPartialScoreChange;
 
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text roundText;
 
     // Start is called before the first frame update
     void Start()
@@ -119,6 +120,7 @@ public class GameDirector : MonoBehaviour
         var wave = new Wave(enemiesToSpawn);
         _newWave.Invoke(wave);
         _waveTimer.Pause();
+        roundText.SetText($"WAVE: {_waveCounter + 1}");
     }
 
     private void StartGame()
