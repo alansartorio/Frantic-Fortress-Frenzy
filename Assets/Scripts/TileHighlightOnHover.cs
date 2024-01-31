@@ -6,6 +6,7 @@ public class TileHighlightOnHover : MonoBehaviour
     private void Start()
     {
         indicator = transform.Find("Indicator").gameObject;
+        indicator.SetActive(false);
     }
 
     void OnMouseEnter()
