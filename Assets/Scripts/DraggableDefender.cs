@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class DraggableDefender : MonoBehaviour, IDragHandler, IEndDragHandler
 {
@@ -22,8 +23,10 @@ public class DraggableDefender : MonoBehaviour, IDragHandler, IEndDragHandler
         var tile = GetHoveringTile();
         if (!tile) return;
 
-
-        transform.position = tile.transform.position;
+        if (tile is PathTile == defender.onPath)
+        {
+            transform.position = tile.transform.position;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -31,7 +34,9 @@ public class DraggableDefender : MonoBehaviour, IDragHandler, IEndDragHandler
         Destroy(gameObject);
         var tile = GetHoveringTile();
         if (!tile) return;
-        
+        if (tile is PathTile != defender.onPath)
+            return;
+
         FindObjectOfType<GameDirector>().Spend((int)defender.cost);
         tile.Occupant = Instantiate(defender.gameObject);
     }

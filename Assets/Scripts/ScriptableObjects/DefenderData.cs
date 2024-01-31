@@ -7,4 +7,5 @@ public class DefenderData : ScriptableObject
     public GameObject model;
     public GameObject gameObject;
     public Sprite icon;
+    public bool onPath;
 }
