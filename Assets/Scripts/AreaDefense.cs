@@ -69,7 +69,6 @@ public class AreaDefense : Defense
     {
         if (!_shootingSystem.isPlaying)
             _shootingSystem.Play();
-        _shootingSystem.transform.LookAt(_targetEnemy.transform);
     }
 
     private void StopShooting()
