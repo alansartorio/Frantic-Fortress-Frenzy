@@ -39,6 +39,7 @@ public class SimpleShell : MonoBehaviour {
     public float displacementStrength = 0.1f;
 
     public Color shellColor;
+    
 
     [Range(0.0f, 5.0f)]
     public float occlusionAttenuation = 1.0f;
@@ -82,6 +83,7 @@ public class SimpleShell : MonoBehaviour {
             shells[i].GetComponent<MeshRenderer>().material.SetFloat("_NoiseMin", noiseMin);
             shells[i].GetComponent<MeshRenderer>().material.SetFloat("_NoiseMax", noiseMax);
             shells[i].GetComponent<MeshRenderer>().material.SetVector("_ShellColor", shellColor);
+            shells[i].GetComponent<MeshRenderer>().material.SetVector("_TilePosition", transform.position);
         }
     }
 
