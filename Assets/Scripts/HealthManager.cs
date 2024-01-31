@@ -27,6 +27,14 @@ public class HealthManager : MonoBehaviour
         _stackableProlongedDamage.Apply(this);
     }
 
+    public void Heal(float hp)
+    {
+        if (health == Health.Zero) return;
+        health.Hp += hp;
+        health.Hp = Math.Min(maxHealth.Hp, health.Hp);
+        onHealthChange.Invoke(this);
+    }
+
     public void ApplyDamage(Health damage)
     {
         if (health == Health.Zero) return;

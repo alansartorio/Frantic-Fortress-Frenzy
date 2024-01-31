@@ -32,6 +32,7 @@ public class GameDirector : MonoBehaviour
     [SerializeField] public int partialScore = 100;
     [SerializeField] public int totalScore = 0;
     private UnityEvent<Wave> _newWave = new();
+    public UnityEvent onNewWave;
     private UnityEvent _rest = new();
     private UnityEvent _gameOver = new();
     private Timer _waveTimer;
@@ -119,6 +120,7 @@ public class GameDirector : MonoBehaviour
             .ToList();
         var wave = new Wave(enemiesToSpawn);
         _newWave.Invoke(wave);
+        onNewWave.Invoke();
         _waveTimer.Pause();
         roundText.SetText($"WAVE: {_waveCounter + 1}");
     }
