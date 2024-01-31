@@ -13,7 +13,7 @@ public class ExpandOnClick : MonoBehaviour
         canBuy = score >= cost;
 
         transform.GetChild(0).GetComponent<MeshRenderer>().material.color =
-            canBuy ? Color.white.WithAlpha(0.025f) : new Color(1f, 0, 0, 0.2f);
+            canBuy ? new Color(1f, 1f, 1f, 0.025f) : new Color(1f, 0, 0, 0.2f);
     }
 
 
