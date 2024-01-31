@@ -67,7 +67,7 @@ public class AreaDefense : Defense
 
     private void Shoot()
     {
-        if (!_shootingSystem.isPlaying)
+        if (_shootingSystem != null && !_shootingSystem.isPlaying)
             _shootingSystem.Play();
     }
 
