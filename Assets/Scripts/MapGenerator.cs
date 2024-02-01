@@ -42,7 +42,9 @@ public class MapGenerator : MonoBehaviour
             for (int i = 0; i < tilesPerCell; i++)
             {
                 var path = Instantiate(pathObject);
-                path.transform.localPosition = NodePositionToWorldPosition(delta.AddedNode.Position, child.Direction.GetDirection() * (i + 1));
+                path.transform.localPosition = NodePositionToWorldPosition(delta.AddedNode.Position,
+                    child.Direction.GetDirection() * (i + 1));
+                
                 // var rotation = (int)child.Direction * 90;
                 // path.transform.localRotation = Quaternion.AngleAxis(rotation, Vector3.up);
             }
@@ -74,6 +76,12 @@ public class MapGenerator : MonoBehaviour
     void SetSpawner(GameObject spawner, Vector2Int pos, Path<Vector2Int> path)
     {
         spawner.transform.localPosition = NodePositionToWorldPosition(pos);
+        var first = path.Nodes.Take(2).ToArray();
+        spawner.transform.rotation = Quaternion.LookRotation(
+            NodePositionToWorldPosition(first[1]) -
+            NodePositionToWorldPosition(first[0]),
+            Vector3.up
+        );
         spawner.GetComponent<EnemySpawner>().path = new EnemyPath(
             path.Nodes.Take(path.Nodes.Count - 1).Select(NodePositionToWorldPosition).ToArray(), baseObject);
         spawner.GetComponentInChildren<ExpandOnClick>().position = pos;
