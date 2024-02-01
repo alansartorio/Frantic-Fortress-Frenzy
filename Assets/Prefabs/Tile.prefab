@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shellMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  shellShader: {fileID: 4800000, guid: 820bd63902e85b550a004cd0ae7e4acb, type: 3}
+  shellMaterial: {fileID: 2100000, guid: c83eb8e54d1e16b99967e3cb27f7b7fe, type: 2}
   updateStatics: 0
   shellCount: 8
   shellLength: 0.1

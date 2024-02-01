@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SimpleShell : MonoBehaviour {
     public Mesh shellMesh;
-    public Shader shellShader;
+    public Material shellMaterial;
 
     public bool updateStatics = true;
 
@@ -47,14 +47,12 @@ public class SimpleShell : MonoBehaviour {
     [Range(0.0f, 1.0f)]
     public float occlusionBias = 0.0f;
 
-    private Material shellMaterial;
+    // private Material shellMaterial;
     private GameObject[] shells;
 
     private Vector3 displacementDirection = new Vector3(0, 0, 0);
 
     void OnEnable() {
-        shellMaterial = new Material(shellShader);
-
         shells = new GameObject[shellCount];
 
         for (int i = 1; i < shellCount; ++i) {
@@ -68,22 +66,26 @@ public class SimpleShell : MonoBehaviour {
             shells[i].GetComponent<MeshRenderer>().material = shellMaterial;
             shells[i].transform.SetParent(this.transform, false);
 
-            // In order to tell the GPU what its uniform variable values should be, we use these "Set" functions which will set the
-            // values over on the GPU. 
-            shells[i].GetComponent<MeshRenderer>().material.SetInt("_ShellCount", shellCount);
-            shells[i].GetComponent<MeshRenderer>().material.SetInt("_ShellIndex", i);
-            shells[i].GetComponent<MeshRenderer>().material.SetFloat("_ShellLength", shellLength);
-            shells[i].GetComponent<MeshRenderer>().material.SetFloat("_Density", density);
-            shells[i].GetComponent<MeshRenderer>().material.SetFloat("_Thickness", thickness);
-            shells[i].GetComponent<MeshRenderer>().material.SetFloat("_Attenuation", occlusionAttenuation);
-            shells[i].GetComponent<MeshRenderer>().material.SetFloat("_ShellDistanceAttenuation", distanceAttenuation);
-            shells[i].GetComponent<MeshRenderer>().material.SetFloat("_Curvature", curvature);
-            shells[i].GetComponent<MeshRenderer>().material.SetFloat("_DisplacementStrength", displacementStrength);
-            shells[i].GetComponent<MeshRenderer>().material.SetFloat("_OcclusionBias", occlusionBias);
-            shells[i].GetComponent<MeshRenderer>().material.SetFloat("_NoiseMin", noiseMin);
-            shells[i].GetComponent<MeshRenderer>().material.SetFloat("_NoiseMax", noiseMax);
-            shells[i].GetComponent<MeshRenderer>().material.SetVector("_ShellColor", shellColor);
-            shells[i].GetComponent<MeshRenderer>().material.SetVector("_TilePosition", transform.position);
+            // Material material = shells[i].GetComponent<MeshRenderer>().material;
+            
+            var propertyBlock = new MaterialPropertyBlock();
+
+            propertyBlock.SetInt("_ShellCount", shellCount);
+            propertyBlock.SetInt("_ShellIndex", i);
+            propertyBlock.SetFloat("_ShellLength", shellLength);
+            propertyBlock.SetFloat("_Density", density);
+            propertyBlock.SetFloat("_Thickness", thickness);
+            propertyBlock.SetFloat("_Attenuation", occlusionAttenuation);
+            propertyBlock.SetFloat("_ShellDistanceAttenuation", distanceAttenuation);
+            propertyBlock.SetFloat("_Curvature", curvature);
+            propertyBlock.SetFloat("_DisplacementStrength", displacementStrength);
+            propertyBlock.SetFloat("_OcclusionBias", occlusionBias);
+            propertyBlock.SetFloat("_NoiseMin", noiseMin);
+            propertyBlock.SetFloat("_NoiseMax", noiseMax);
+            propertyBlock.SetVector("_ShellColor", shellColor);
+            propertyBlock.SetVector("_TilePosition", transform.position);
+            
+            shells[i].GetComponent<MeshRenderer>().SetPropertyBlock(propertyBlock);
         }
     }
 
