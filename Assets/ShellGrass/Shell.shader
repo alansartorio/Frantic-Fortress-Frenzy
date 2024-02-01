@@ -10,6 +10,7 @@ Shader "Custom/Shell"
         }
 
         HLSLINCLUDE
+        #pragma multi_compile_instancing
         #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
         ENDHLSL
 
