@@ -43,6 +43,7 @@ public class PauseScript : MonoBehaviour
 
     public void QuitToMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 }
