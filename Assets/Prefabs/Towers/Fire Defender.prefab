@@ -71,17 +71,17 @@ PrefabInstance:
     - target: {fileID: 6398992141950525348, guid: 02c7a5f6e28d1402e83e6730942b9d34,
         type: 3}
       propertyPath: damage._hp
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6398992141950525348, guid: 02c7a5f6e28d1402e83e6730942b9d34,
         type: 3}
       propertyPath: damage._armor
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6398992141950525348, guid: 02c7a5f6e28d1402e83e6730942b9d34,
         type: 3}
       propertyPath: damage._shield
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

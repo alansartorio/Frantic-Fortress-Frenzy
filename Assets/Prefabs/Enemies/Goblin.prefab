@@ -163,17 +163,22 @@ PrefabInstance:
     - target: {fileID: 1156793161105360925, guid: 08fe77601e3bd409bab6f24aab7cf33b,
         type: 3}
       propertyPath: maxHealth._hp
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1957301086068823479, guid: 08fe77601e3bd409bab6f24aab7cf33b,
         type: 3}
       propertyPath: damage._hp
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3509487019743703083, guid: 08fe77601e3bd409bab6f24aab7cf33b,
         type: 3}
       propertyPath: m_Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911398435306760605, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5430435993354256091, guid: 08fe77601e3bd409bab6f24aab7cf33b,
         type: 3}
@@ -224,6 +229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273414640965052949, guid: 08fe77601e3bd409bab6f24aab7cf33b,
+        type: 3}
+      propertyPath: _unitScore
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

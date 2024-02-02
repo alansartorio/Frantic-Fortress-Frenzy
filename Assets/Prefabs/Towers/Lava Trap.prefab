@@ -47,12 +47,17 @@ PrefabInstance:
     - target: {fileID: 1174651813997297986, guid: 9bddee9f8b9a65916a5884709f8c84b7,
         type: 3}
       propertyPath: damage._hp
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1174651813997297986, guid: 9bddee9f8b9a65916a5884709f8c84b7,
         type: 3}
       propertyPath: damage._armor
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174651813997297986, guid: 9bddee9f8b9a65916a5884709f8c84b7,
+        type: 3}
+      propertyPath: damage._shield
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2046259660177020573, guid: 9bddee9f8b9a65916a5884709f8c84b7,
         type: 3}

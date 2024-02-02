@@ -41,14 +41,21 @@ public class GameDirector : MonoBehaviour
     private int _idleSpawns = 0;
     private int _waveCounter = -1;
     private int _enemiesPerWave = 10;
+    private int _timesExpanded = 0;
+    private int _baseExpandCost = 100;
+    private float _baseExpandBase = 1.3f;
+    
     private DateTime _startTime;
     [SerializeField] public int survivedTimeModifier = 10;
+    // it is set to discount 20% of your income after 10 minutes of playing
+    [SerializeField] public double survivedTimeDebuff = 0.2 / (5 * 60); 
     [SerializeField] private float timeScoreInterval;
     [SerializeField] private int timeScoreMultiplier;
     private float _timeScoreTimer;
     private Stages _stages = new();
 
     public UnityEvent<int> OnPartialScoreChange;
+    public UnityEvent<int> OnTerrainExpand;
 
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text roundText;
@@ -84,7 +91,7 @@ public class GameDirector : MonoBehaviour
 
         scoreText.SetText($"SCORE: {partialScore}");
     }
-
+    
     public void RegisterSpawn(SpawnerInfo spawnerInfo)
     {
         _newWave.AddListener(spawnerInfo.onNewWave);
@@ -144,6 +151,19 @@ public class GameDirector : MonoBehaviour
         }
     }
 
+    public int GetExpandCost()
+    {
+        return _baseExpandCost + Convert.ToInt32(50 * _timesExpanded + Math.Pow(_baseExpandBase, _timesExpanded)) - 1;
+    }
+
+    public int ExpandTerrain()
+    {
+        _timesExpanded++;
+        var cost = GetExpandCost();
+        OnTerrainExpand.Invoke(cost);
+        return cost;
+    }
+
     private void StartRest()
     {
         _state = GameState.Rest;
@@ -170,9 +190,14 @@ public class GameDirector : MonoBehaviour
         OnPartialScoreChange.Invoke(partialScore);
     }
 
+    public double GetDebuffValue()
+    {
+        return Math.Min(0.9, DateTime.Now.Subtract(_startTime).Seconds * survivedTimeDebuff);
+    }
+
     private void AddScore(int score)
     {
-        partialScore += score;
+        partialScore += Convert.ToInt32(score * (1 - GetDebuffValue()));
         totalScore += score;
         OnPartialScoreChange.Invoke(partialScore);
     }

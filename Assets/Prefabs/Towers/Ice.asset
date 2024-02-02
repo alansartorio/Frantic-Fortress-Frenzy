@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ff4bee1334e3fb0214602ff866c5c, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
-  cost: 50
+  cost: 150
   model: {fileID: 919132149155446097, guid: f1306eca076ca14918f48c7fa949b07e, type: 3}
   gameObject: {fileID: 1840594335450917672, guid: be0903563d51ede0f9f353d593128bbe,
     type: 3}

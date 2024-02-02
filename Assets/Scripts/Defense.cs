@@ -34,7 +34,12 @@ public abstract class Defense : MonoBehaviour
             });
         }
         else
-            GetComponent<Attack>().onAttack.AddListener(() => { audioSource.PlayOneShot(shotSound); });
+            GetComponent<Attack>().onAttack.AddListener(() => {
+                if(shotSound != null)
+                {
+                    audioSource.PlayOneShot(shotSound);
+                } 
+            });
     }
 
     public abstract void TargetEnter(ICollection<GameObject> enemies, GameObject addedEnemy);

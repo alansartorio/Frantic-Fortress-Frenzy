@@ -69,7 +69,7 @@ public class MapGenerator : MonoBehaviour
         // Remove expandable tile from spawner if closed end
         if (!node.Children.Any() && _spawners.TryGetValue(node.Position, out var spawner2))
         {
-            Destroy(spawner2.transform.GetChild(0).GetChild(0).gameObject);
+            spawner2.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
         }
     }
 

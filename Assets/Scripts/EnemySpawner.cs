@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
@@ -20,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     private readonly UnityEvent _allEnemiesDead = new();
     private readonly UnityEvent _gameOver = new();
     private readonly UnityEvent<Enemy> _enemyKilled = new();
-
+    [SerializeField] private TMP_Text _costText;
 
     void Start()
     {
@@ -28,14 +30,22 @@ public class EnemySpawner : MonoBehaviour
         _spawnTimer.Stop();
         _spawnTimer.onTick.AddListener(SpawnNextEnemy);
 
-        var director = FindObjectOfType<GameDirector>();
-        director.RegisterSpawn(new GameDirector.SpawnerInfo()
+        var gameDirector = FindObjectOfType<GameDirector>();
+        gameDirector.OnTerrainExpand.AddListener(SetCost);
+        SetCost(gameDirector.GetExpandCost());
+        
+        gameDirector.RegisterSpawn(new GameDirector.SpawnerInfo()
         {
             enemiesWiped = _allEnemiesDead,
             enemyKilled = _enemyKilled,
             onGameOver = () => _gameOver.Invoke(),
             onNewWave = SpawnWave
         });
+    }
+
+    void SetCost(int cost)
+    {
+        _costText.SetText($"${cost}");
     }
 
     void Update()
