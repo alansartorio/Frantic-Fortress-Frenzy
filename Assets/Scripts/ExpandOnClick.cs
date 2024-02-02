@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ExpandOnClick : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class ExpandOnClick : MonoBehaviour
     {
         _gameDirector.OnPartialScoreChange.AddListener(PartialScoreChanged);
     }
-    
+
     private void OnDisable()
     {
         _gameDirector.OnPartialScoreChange.RemoveListener(PartialScoreChanged);
@@ -34,6 +35,7 @@ public class ExpandOnClick : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         if (!canBuy) return;
         FindObjectOfType<MapGenerator>().ExpandMap(position);
         _gameDirector.Spend(cost);
