@@ -5,7 +5,7 @@ Shader "Custom/Shell"
         Tags
         {
             "RenderType" = "Opaque"
-            "RenderPipeline" = "UniversalRenderPipeline"
+            "RenderPipeline" = "UniversalPipeline"
             "Queue" = "Geometry"
         }
 
