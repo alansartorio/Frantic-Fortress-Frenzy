@@ -3,20 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class TransitionManager : MonoBehaviour
 {
+    public GameObject youLostMenu;
 
     public void YouLost()
     {
-        GameObject youLostMenu = GameObject.Find("YouLostMenu");
-        
-        CanvasGroup canvasGroup = youLostMenu.GetComponentInChildren<CanvasGroup>();
-        
-        canvasGroup.alpha = 0.4f;
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.interactable = true;
+        youLostMenu.SetActive(true);
+        Time.timeScale = 0;
     }
     
     public void GoToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 }
